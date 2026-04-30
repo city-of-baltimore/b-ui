@@ -8,5 +8,7 @@ dev:
 build:
     npm run build
 
+storybook:
+    npm run storybook
 
 
