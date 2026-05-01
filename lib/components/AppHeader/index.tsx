@@ -13,7 +13,7 @@ import { useTheme } from "@mui/material/styles";
 import { Link as RouterLink } from "react-router-dom";
 import { useState } from "react";
 
-import cityOfBaltimoreLogo from "../assets/branding/city-of-baltimore-logo.png";
+import cityOfBaltimoreLogo from "../../assets/branding/city-of-baltimore-logo.png";
 import { useColorMode } from "../colorMode";
 import { messages } from "../i18n/messages";
 import { buildChromeUtilityButtonSx, buildFixedChromeSx } from "../surfaceStyles";

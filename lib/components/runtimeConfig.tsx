@@ -11,9 +11,10 @@ import { z } from "zod";
 
 import { ErrorState } from "../components/ErrorState";
 import { LoadingState } from "../components/LoadingState";
-import { normalizeFrontendError, reportFrontendError } from "./frontendErrors";
+import { ApiError } from "./api";
 import { setRuntimeFormattingDefaults } from "./formatting";
 import { setRuntimeDefaultColorMode } from "./colorModeDefaults";
+import { normalizeFrontendError, reportFrontendError } from "./frontendErrors";
 
 
 const localeSchema = z.object({
@@ -181,12 +182,44 @@ const RuntimeConfigContext = createContext<RuntimeConfig | null>(null);
 
 async function fetchRuntimeConfig(): Promise<RuntimeConfig> {
     const response = await fetch("/api/app-config");
+    const requestId = response.headers.get("X-Request-ID");
+    const json = await readJsonSafely(response);
+
     if (!response.ok) {
-        throw new Error("Unable to load the runtime configuration.");
+        throw new ApiError(
+            "Unable to load the runtime configuration.",
+            response.status,
+            extractEnvelopeRequestId(json) ?? requestId,
+            json,
+        );
     }
 
-    const json = await response.json();
     return runtimeConfigSchema.parse(json);
+}
+
+async function readJsonSafely(response: Response) {
+    const text = await response.text();
+    if (!text) {
+        return null;
+    }
+
+    try {
+        return JSON.parse(text) as unknown;
+    } catch {
+        return null;
+    }
+}
+
+function extractEnvelopeRequestId(json: unknown) {
+    if (typeof json !== "object" || json === null || !("error" in json)) {
+        return undefined;
+    }
+    const error = (json as { error?: unknown }).error;
+    if (typeof error !== "object" || error === null || !("request_id" in error)) {
+        return undefined;
+    }
+    const requestId = (error as { request_id?: unknown }).request_id;
+    return typeof requestId === "string" ? requestId : undefined;
 }
 
 
@@ -225,6 +258,7 @@ export function RuntimeConfigProvider({ children }: { children: ReactNode }) {
                     title={error.title}
                     titleComponent="h1"
                     description={error.description}
+                    requestId={error.requestId}
                 />
             </Box>
         );

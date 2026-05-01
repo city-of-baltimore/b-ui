@@ -3,6 +3,42 @@ import { alpha, type Theme } from "@mui/material/styles";
 export type SectionSurfacePadding = "compact" | "default" | "roomy";
 export type SectionSurfaceTone = "default" | "soft" | "hero" | "brand";
 
+declare module "@mui/material/styles" {
+    interface Theme {
+        launchpadTokens: {
+            focusRing: string;
+            radii: {
+                control: number;
+                overlay: number;
+                pill: number;
+                surface: number;
+            };
+            chart: {
+                primary: string;
+                secondary: string;
+                tertiary: string;
+            };
+        };
+    }
+
+    interface ThemeOptions {
+        launchpadTokens?: {
+            focusRing?: string;
+            radii?: {
+                control: number;
+                overlay: number;
+                pill: number;
+                surface: number;
+            };
+            chart?: {
+                primary: string;
+                secondary: string;
+                tertiary: string;
+            };
+        };
+    }
+}
+
 const paddingByVariant: Record<SectionSurfacePadding, object> = {
     compact: { p: { xs: 2, sm: 2.5 } },
     default: { p: { xs: 2.5, sm: 3 } },

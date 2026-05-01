@@ -3,41 +3,6 @@ import { alpha, createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 import { getThemeModeDefinition, type LaunchpadResolvedColorMode } from "./themeTokens";
 
-declare module "@mui/material/styles" {
-    interface Theme {
-        launchpadTokens: {
-            focusRing: string;
-            radii: {
-                control: number;
-                overlay: number;
-                pill: number;
-                surface: number;
-            };
-            chart: {
-                primary: string;
-                secondary: string;
-                tertiary: string;
-            };
-        };
-    }
-
-    interface ThemeOptions {
-        launchpadTokens?: {
-            focusRing?: string;
-            radii?: {
-                control: number;
-                overlay: number;
-                pill: number;
-                surface: number;
-            };
-            chart?: {
-                primary: string;
-                secondary: string;
-                tertiary: string;
-            };
-        };
-    }
-}
 
 const RADII = {
     control: 14,
@@ -166,7 +131,6 @@ export function buildTheme(mode: PaletteMode) {
                                 ? alpha(tokenSet.palette.backgroundPaper, 0.56)
                                 : alpha("#ffffff", 0.84),
                         },
-                        // TODO xanderjakeq: why is this property missing?
                         // containedPrimary: {
                         //     boxShadow: "none",
                         //     "&:hover": {
