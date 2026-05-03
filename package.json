@@ -1,8 +1,11 @@
 {
-  "name": "opi-component-library",
+  "name": "@balt-opi/opi-component-library",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "repository": {
+      "url": "https://github.com/balt-opi/opi-component-library"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -15,7 +18,7 @@
   "main": "./dist/main.js",
   "types": "./dist/lib/main.d.ts",
   "files": ["dist"],
-  "dependencies": {
+  "peerDependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^9.0.0",
