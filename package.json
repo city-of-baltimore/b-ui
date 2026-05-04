@@ -1,15 +1,14 @@
 {
-  "name": "@balt-opi/opi-component-library",
+  "name": "@balt-opi/ui-components",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "repository": {
-      "url": "https://github.com/balt-opi/opi-component-library"
+      "url": "https://github.com/balt-opi/ui-components"
   },
   "scripts": {
-    "dev": "vite",
     "build": "tsc -b && vite build",
-    "nocheck-build": "tsc -b --noCheck && vite build",
+    "typecheck": "tsc -b --noCheck --noEmit",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
