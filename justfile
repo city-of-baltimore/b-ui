@@ -2,16 +2,15 @@
 default:
     just --list
 
+# reruns typechecks on file changes
 dev:
-    npm run dev -- --host
+    watchexec -e ts,tsx npm run typecheck
 
+# build for production
 build:
     rm -rf dist
     npm run build
 
+# run storybook
 storybook:
     npm run storybook
-
-fixerrs:
-    watchexec -e ts,tsx npm run build
-
