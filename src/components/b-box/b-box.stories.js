@@ -1,15 +1,16 @@
 import { fn } from 'storybook/test';
 
-import { createButton } from './Button';
+import './b-box.js';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: 'Example/Button',
+  title: 'Components/b-box',
   tags: ['autodocs'],
   render: ({ label, ...args }) => {
     // You can either use a function to create DOM elements or use a plain html string!
     // return `<div>${label}</div>`;
-    return createButton({ label, ...args });
+    // return createButton({ label, ...args });
+    return `<b-box style="border: 1px solid black;">hello!!</b-box>`;
   },
   argTypes: {
     backgroundColor: { control: 'color' },

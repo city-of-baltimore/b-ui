@@ -1,0 +1,111 @@
+:root {
+  color-scheme: light dark;
+
+  /* spacing scale ratio */
+  --s-ratio: 1.5;
+  /* text block max width */
+  --measure: 60ch;
+
+  /* SPACING */
+  --s-5: calc(var(--s-4) / var(--s-ratio));
+  --s-4: calc(var(--s-3) / var(--s-ratio));
+  --s-3: calc(var(--s-2) / var(--s-ratio));
+  --s-2: calc(var(--s-1) / var(--s-ratio));
+  --s-1: calc(var(--s0)  / var(--s-ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0) * var(--s-ratio));
+  --s2: calc(var(--s1) * var(--s-ratio));
+  --s3: calc(var(--s2) * var(--s-ratio));
+  --s4: calc(var(--s3) * var(--s-ratio));
+  --s5: calc(var(--s4) * var(--s-ratio));
+
+  /* TYPOGRAPHY */
+  --text-xs   : var(--s-5);
+  --text-sm   : var(--s-2);
+  --text-base : var(--s0);
+  --text-prose: var(--s1);
+  --text-md   : var(--s2);
+  --text-lg   : var(--s4);
+
+  --text-weight-md: 600;
+
+  --text-height-base: 1;
+  --text-height-md  : calc(var(--text-height-base) * var(--s-ratio));
+
+  /* RAW COLORS */
+  --color-white-off    : #f2f2f2;
+  --color-purple-dark  : #190e21;
+  --color-purple       : #2f1c3d;
+  --color-purple-medium: #8837ef;
+  --color-purple-light : #f3eef9;
+  --color-yellow       : #fabe21;
+  --color-yellow-pale  : #fbd05f;
+  --color-blue-light   : #e1f1f5;
+  --color-grey-light   : #d0d4dd;
+  --color-grey-dark    : #a2a6af;
+
+  /* CONTEXTUAL COLORS */
+  --color-background: light-dark(var(--color-white-off), var(--color-purple-dark));
+  --color-foreground: light-dark(var(--color-purple-dark), var(--color-white-off));
+
+  --color-grey: light-dark(var(--color-grey-dark), var(--color-grey-light));
+
+  /* --color-shadow: light-dark(); */
+
+  --color-confirm      : light-dark(green, green);
+  --color-confirm-light: #62cb3b;
+  --color-warning      : #bf1818;
+  --color-warning-light: red;
+
+  /* BOX STYLES */
+
+  --box-border-thin: var(--s-5) solid var(--color-grey)
+
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+main,
+p {
+  max-inline-size: var(--measure);
+}
+
+/* utilities */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--text-weight-md);
+}
+
+h1 {
+  font-size: var(--text-lg);
+}
+
+h2 {
+  font-size: var(--text-md);
+}
+
+h3 {
+  font-size: var(--text-base);
+}
+
+h4,
+h5,
+h6 {
+  font-size: var(--text-sm);
+}
