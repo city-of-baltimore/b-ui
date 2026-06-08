@@ -1,17 +1,24 @@
 {
-  "name": "elenajs-wc",
-  "version": "0.0.0",
-  "description": "",
-  "license": "ISC",
-  "author": "",
+  "name": "@balt-opi/ui-components",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
-  "main": "dist/index.js",
-  "style": "dist/bundle.css",
+  "repository": {
+    "url": "https://github.com/balt-opi/ui-components"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
+  "main": "dist/index.js",
+  "types": "dist/custom-elements.d.ts",
+  "style": "dist/bundle.css",
+  "description": "The component library for OPI web products",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@elenajs/core": "^1.0.0"
   },
