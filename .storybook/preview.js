@@ -1,10 +1,15 @@
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
+
+import '../src/theme@0.0.1.css';
+import '../src/deps/css-scope-inline@1.0.0';
+
 /** @type { import('@storybook/html-vite').Preview } */
 const preview = {
   parameters: {
     controls: {
       matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
+        color: /(background|color)$/i,
+        date: /Date$/i,
       },
     },
 
@@ -15,6 +20,16 @@ const preview = {
       test: "todo"
     }
   },
+  decorators: [
+    withThemeByDataAttribute({
+      themes: {
+        light: 'light',
+        dark: 'dark',
+      },
+      defaultTheme: 'light',
+      attributeName: 'data-theme'
+    }),
+  ],
 };
 
 export default preview;

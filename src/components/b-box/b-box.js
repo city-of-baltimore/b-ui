@@ -1,24 +1,19 @@
 import { Elena, html } from "@elenajs/core";
-import { BORDER } from "../../attributes";
-import { identifier_create } from "../../helpers.js";
-
+import { BORDER } from "../../attributes.js";
+import { get_attribute_vals, identifier_create } from "../../helpers.js";
 
 export default class BBox extends Elena(HTMLElement) {
   static tagName = "b-box";
   static props = [BORDER];
 
-  /** @property @type {"default" | "primary" | "danger"} */
   border = 'var(--box-border-thin)';
 
+  willUpdate() {
+    this.generate_styles()
+  }
 
-  constructor() {
-    super()
-
-    const parts = {
-      main: "main"
-    }
-
-    const attr = [border];
+  generate_styles() {
+    const attr = get_attribute_vals(this.constructor.props, this);
     const style_id = identifier_create(this.constructor.tagName, attr);
 
     this.dataset.i = style_id;
@@ -30,7 +25,7 @@ export default class BBox extends Elena(HTMLElement) {
         [data-i=${style_id}] {
           display: block;
           padding: var(--s-1);
-          border: ${border};
+          border: ${this.border};
           background-color: var(--color-background);
           border-radius: var(--s0);
           transition: background-color .1s ease-in, box-shadow .1s ease-in;
@@ -42,21 +37,7 @@ export default class BBox extends Elena(HTMLElement) {
       style_node.setAttribute("id", style_id);
       document.head.appendChild(style_node);
     }
-
-  }
-
-  connectedCallback() {
-    const shadow_root = this.attachShadow({
-      mode: 'open'
-    });
-
-    htmx?.process(this.template(shadow_root));
-  }
-
-  render() {
-    return html`
-      <div class="b-box">${this.text}</div>
-    `;
   }
 }
+
 BBox.define();

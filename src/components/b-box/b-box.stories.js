@@ -1,55 +1,36 @@
 import { fn } from 'storybook/test';
-
 import './b-box.js';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: 'Components/b-box',
+  title: 'Layout/b-box',
   tags: ['autodocs'],
-  render: ({ label, ...args }) => {
-    // You can either use a function to create DOM elements or use a plain html string!
-    // return `<div>${label}</div>`;
-    // return createButton({ label, ...args });
-    return `<b-box style="border: 1px solid black;">hello!!</b-box>`;
-  },
-  argTypes: {
-    backgroundColor: { control: 'color' },
-    label: { control: 'text' },
-    onClick: { action: 'onClick' },
-    primary: { control: 'boolean' },
-    size: {
-      control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
-    },
-  },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
-  args: { onClick: fn() },
 };
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary = {
-  args: {
-    primary: true,
-    label: 'Button',
+export const Default = {
+  render: () => {
+    return (
+      `<b-box>
+       </b-box>`
+    );
   },
 };
 
-export const Secondary = {
-  args: {
-    label: 'Button',
+export const Nested = {
+  render: () => {
+    return (
+      `<b-box>
+        <b-box>
+          <b-box></b-box>
+          <b-box></b-box>
+          <b-box></b-box>
+        </b-box>
+        <b-box>
+          <b-box></b-box>
+          <b-box></b-box>
+          <b-box></b-box>
+        </b-box>
+       </b-box>`
+    );
   },
 };
 
-export const Large = {
-  args: {
-    size: 'large',
-    label: 'Button',
-  },
-};
-
-export const Small = {
-  args: {
-    size: 'small',
-    label: 'Button',
-  },
-};
