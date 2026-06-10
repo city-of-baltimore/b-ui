@@ -15,6 +15,15 @@ export const Default = {
   },
 };
 
+export const Custom_Border = {
+  render: () => {
+    return (
+      `<b-box border="var(--s-4) solid var(--color-purple-medium)">
+       </b-box>`
+    );
+  },
+};
+
 export const Nested = {
   render: () => {
     return (
