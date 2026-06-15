@@ -1,0 +1,45 @@
+import { Elena } from "@elenajs/core";
+import { RATIO, ROUNDED, BORDER } from "../../attributes.js";
+import { generate_styles } from "../../helpers.js";
+
+export default class BFrame extends Elena(HTMLElement) {
+    static tagName = "b-frame";
+    static props = [RATIO, ROUNDED, BORDER];
+
+    ratio = '16:9';
+    rounded = false;
+    border = false;
+
+    willUpdate() {
+        generate_styles(this)
+    }
+
+    styles(style_id, attribute_vals) {
+        let [n, d] = this.ratio.split(":")?.map(n => Number(n))
+
+        return (`
+            [data-i="${style_id}"] {
+                --n: ${n};
+                --d: ${d};
+                aspect-ratio: var(--n) / var(--d);
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: ${this.border ?
+                (typeof (attribute_vals[BORDER]) === 'string' ? attribute_vals[BORDER] : 'var(--box-border-thin)')
+                : 'unset'};
+                border-radius: ${this.rounded ? 'var(--s1)' : 'unset'};
+            }
+
+            [data-i="${style_id}"] > img,
+            [data-i="${style_id}"] > video {
+                inline-size: 100%;
+                block-size: 100%;
+                object-fit: cover;
+            }
+    `)
+    }
+}
+
+BFrame.define();
