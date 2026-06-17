@@ -87,7 +87,7 @@ export const rounded = {
 export const override_radius = {
     render: () => {
         return (`
-            <b-frame border rounded style="--s1: 10px;">
+            <b-frame border rounded style="--radius: var(--s-1);">
             </b-frame>
         `);
     },

@@ -21,6 +21,8 @@ export default class BFrame extends Elena(HTMLElement) {
             [data-i="${style_id}"] {
                 --n: ${n};
                 --d: ${d};
+                --radius: var(--s1);
+
                 aspect-ratio: var(--n) / var(--d);
                 overflow: hidden;
                 display: flex;
