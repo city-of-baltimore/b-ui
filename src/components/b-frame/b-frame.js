@@ -6,9 +6,9 @@ export default class BFrame extends Elena(HTMLElement) {
     static tagName = "b-frame";
     static props = [RATIO, ROUNDED, BORDER];
 
-    ratio = '16:9';
-    rounded = false;
-    border = false;
+    [RATIO] = '16:9';
+    [ROUNDED] = false;
+    [BORDER] = false;
 
     willUpdate() {
         generate_styles(this)
@@ -26,10 +26,10 @@ export default class BFrame extends Elena(HTMLElement) {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                border: ${this.border ?
+                border: ${this[BORDER] ?
                 (typeof (attribute_vals[BORDER]) === 'string' ? attribute_vals[BORDER] : 'var(--box-border-thin)')
                 : 'unset'};
-                border-radius: ${this.rounded ? 'var(--s1)' : 'unset'};
+                border-radius: ${this[ROUNDED] ? 'var(--radius)' : 'unset'};
             }
 
             [data-i="${style_id}"] > img,

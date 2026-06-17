@@ -6,18 +6,18 @@ export default class BBox extends Elena(HTMLElement) {
     static tagName = "b-box";
     static props = [BORDER];
 
-    border = 'var(--box-border-thin)';
+    [BORDER] = 'var(--box-border-thin)';
 
     willUpdate() {
         generate_styles(this)
     }
 
-    styles(style_id) {
+    styles(style_id, attribute_vals) {
         return (`
       [data-i=${style_id}] {
           display: block;
           padding: var(--s-1);
-          border: ${this.border};
+          border: ${attribute_vals[BORDER]};
           background-color: var(--color-background);
           border-radius: var(--s-1);
           transition: background-color .1s ease-in, box-shadow .1s ease-in;
