@@ -1,4 +1,4 @@
-:# OPI Component Library
+# OPI Component Library
 
 ## Installation/Usage
 

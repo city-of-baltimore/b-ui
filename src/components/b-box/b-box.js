@@ -21,7 +21,6 @@ export default class BBox extends Elena(HTMLElement) {
           background-color: var(--color-background);
           border-radius: var(--s-1);
           transition: background-color .1s ease-in, box-shadow .1s ease-in;
-          overflow: hidden;
           margin: var(--s0);
       }
     `)
