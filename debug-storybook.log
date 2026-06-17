@@ -1,15 +1,23 @@
-[11:00:52.357] [INFO] [36mInitializing Storybook[39m
-[11:00:52.537] [DEBUG] Getting package.json info for /home/xanderjakeq/dev/elenajs-wc/package.json...
-[11:00:52.538] [INFO] Package manager: npm
-[11:00:52.540] [DEBUG] Getting CLI versions from NPM for storybook...
-[11:00:52.540] [DEBUG] Executing command: npm info storybook version
-[11:00:53.191] [INFO] Adding Storybook version 10.4.2 to your project
-[11:00:53.191] [DEBUG] Executing command: npm config get min-release-age --workspaces=false --include-workspace-root
-[11:00:53.309] [DEBUG] Using cached package.json for /home/xanderjakeq/dev/elenajs-wc/package.json...
-[11:00:53.311] [ERROR] Unable to initialize Storybook in this directory.
-
-Storybook couldn't detect a supported framework or configuration for your project. Make sure you're inside a framework project (e.g., React, Vue, Svelte, Angular, Next.js) and that its dependencies are installed.
-
-Tips:
-- Run init in an empty directory or create a new framework app first.
-- If this directory contains unrelated files, try a new directory for Storybook.
+[13:25:27.885] [INFO] storybook v10.4.2
+[13:25:28.391] [DEBUG] Getting package.json info for /home/xanderjakeq/dev/opi-component-library-wc/package.json...
+[13:25:29.563] [WARN] 🚨 Unable to index files:
+- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--default
+- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--custom-spacing
+- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--nested
+- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--nested-recursive
+- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--splitting
+[13:25:29.568] [ERROR] Error: [38;2;241;97;97mUnable to index files:
+- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--default
+- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--custom-spacing
+- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--nested
+- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--nested-recursive
+- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--splitting[39m
+    at _StoryIndexGenerator.getIndexAndStats (file://./node_modules/storybook/dist/core-server/index.js:16845:15)
+    at async _StoryIndexGenerator.getIndex (file://./node_modules/storybook/dist/core-server/index.js:16824:13)
+    at async Object.experimental_serverChannel (file://./node_modules/@storybook/addon-vitest/dist/preset.js:460:14)
+    at async buildDevStandalone (file://./node_modules/storybook/dist/core-server/index.js:19472:32)
+    at async withTelemetry (file://./node_modules/storybook/dist/_node-chunks/chunk-PU4IASEN.js:655:12)
+    at async dev (file://./node_modules/storybook/dist/bin/core.js:2735:3)
+    at async _Command.<anonymous> (file://./node_modules/storybook/dist/bin/core.js:2805:92)
+[13:25:29.569] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.
