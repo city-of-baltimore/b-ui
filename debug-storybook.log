@@ -1,17 +1,15 @@
-[13:25:27.885] [INFO] storybook v10.4.2
-[13:25:28.391] [DEBUG] Getting package.json info for /home/xanderjakeq/dev/opi-component-library-wc/package.json...
-[13:25:29.563] [WARN] 🚨 Unable to index files:
-- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--default
-- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--custom-spacing
-- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--nested
-- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--nested-recursive
-- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--splitting
-[13:25:29.568] [ERROR] Error: [38;2;241;97;97mUnable to index files:
-- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--default
-- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--custom-spacing
-- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--nested
-- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--nested-recursive
-- ./src/components/b-center/b-stack.stories.js,./src/components/b-stack/b-stack.stories.js: Duplicate stories with id: atoms-b-stack--splitting[39m
+[12:21:10.328] [INFO] storybook v10.4.2
+[12:21:11.392] [DEBUG] Getting package.json info for /home/xanderjakeq/dev/opi-component-library-wc/package.json...
+[12:21:13.050] [WARN] 🚨 Unable to index files:
+- ./src/components/b-imposter/b-switcher.stories.js,./src/components/b-switcher/b-switcher.stories.js: Duplicate stories with id: atoms-b-switcher--default
+- ./src/components/b-imposter/b-switcher.stories.js,./src/components/b-switcher/b-switcher.stories.js: Duplicate stories with id: atoms-b-switcher--threshold
+- ./src/components/b-imposter/b-switcher.stories.js,./src/components/b-switcher/b-switcher.stories.js: Duplicate stories with id: atoms-b-switcher--spacing
+- ./src/components/b-imposter/b-switcher.stories.js,./src/components/b-switcher/b-switcher.stories.js: Duplicate stories with id: atoms-b-switcher--limit
+[12:21:13.058] [ERROR] Error: [38;2;241;97;97mUnable to index files:
+- ./src/components/b-imposter/b-switcher.stories.js,./src/components/b-switcher/b-switcher.stories.js: Duplicate stories with id: atoms-b-switcher--default
+- ./src/components/b-imposter/b-switcher.stories.js,./src/components/b-switcher/b-switcher.stories.js: Duplicate stories with id: atoms-b-switcher--threshold
+- ./src/components/b-imposter/b-switcher.stories.js,./src/components/b-switcher/b-switcher.stories.js: Duplicate stories with id: atoms-b-switcher--spacing
+- ./src/components/b-imposter/b-switcher.stories.js,./src/components/b-switcher/b-switcher.stories.js: Duplicate stories with id: atoms-b-switcher--limit[39m
     at _StoryIndexGenerator.getIndexAndStats (file://./node_modules/storybook/dist/core-server/index.js:16845:15)
     at async _StoryIndexGenerator.getIndex (file://./node_modules/storybook/dist/core-server/index.js:16824:13)
     at async Object.experimental_serverChannel (file://./node_modules/@storybook/addon-vitest/dist/preset.js:460:14)
@@ -19,5 +17,5 @@
     at async withTelemetry (file://./node_modules/storybook/dist/_node-chunks/chunk-PU4IASEN.js:655:12)
     at async dev (file://./node_modules/storybook/dist/bin/core.js:2735:3)
     at async _Command.<anonymous> (file://./node_modules/storybook/dist/bin/core.js:2805:92)
-[13:25:29.569] [WARN] Broken build, fix the error above.
+[12:21:13.061] [WARN] Broken build, fix the error above.
 You may need to refresh the browser.

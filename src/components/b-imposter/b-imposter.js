@@ -1,37 +1,31 @@
 import { Elena } from "@elenajs/core";
-import { SPACE, THRESHOLD, LIMIT } from "../../attributes.js";
+import { FIXED, MARGIN } from "../../attributes.js";
 import { generate_styles } from "../../helpers.js";
 
 export default class BImposter extends Elena(HTMLElement) {
     static tagName = "b-imposter";
-    static props = [SPACE, THRESHOLD, LIMIT];
+    static props = [FIXED, MARGIN];
 
-    [SPACE] = "var(--s0)";
-    [THRESHOLD] = "var(--measure)";
-    [LIMIT] = 4;
+    [FIXED] = false;
+    [MARGIN] = "0px";
 
     willUpdate() {
         generate_styles(this)
     }
 
     styles(style_id) {
-        const limit = this[LIMIT] + 1;
-
         return (`
             [data-i="${style_id}"] {
-                display: flex;
-                flex-wrap: wrap;
-                gap: ${this[SPACE]};
+                position: ${this[FIXED] ? 'fixed' : 'absolute'};
+                inset-block-start: 50%;
+                inset-inline-start: 50%;
+                transform: translate(-50%, -50%);
             }
 
-            [data-i="${style_id}"] > * {
-                flex-grow: 1;
-                flex-basis: calc(( ${this[THRESHOLD]} - 100%) * 999);
-            }
-
-            [data-i="${style_id}"] > :nth-last-child(n+ ${limit}),
-            [data-i="${style_id}"] > :nth-last-child(n+ ${limit}) ~ * {
-                flex-basis: 100%;
+            [data-i="${style_id}"] {
+                overflow: auto;
+                max-inline-size: calc(100% - (${this[MARGIN]} * 2));
+                max-block-size: calc(100% - (${this[MARGIN]} * 2));
             }
     `)
     }
