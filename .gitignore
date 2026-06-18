@@ -4,3 +4,4 @@ dist/
 *storybook.log
 .npmrc
 storybook-static
+.ignore
