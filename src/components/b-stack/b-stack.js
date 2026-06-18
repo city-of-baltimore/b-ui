@@ -14,7 +14,7 @@ export default class BStack extends Elena(HTMLElement) {
         generate_styles(this)
     }
 
-    styles(style_id, attribute_vals) {
+    styles(style_id) {
         return (`
            [data-i="${style_id}"] {
              display: flex;
@@ -22,16 +22,16 @@ export default class BStack extends Elena(HTMLElement) {
              justify-content: flex-start;
            }
 
-           [data-i="${style_id}"]${attribute_vals[RECURSIVE] ? '' : ' >'} * + * {
-               margin-block-start: ${attribute_vals[SPACE]};
+           [data-i="${style_id}"]${this[RECURSIVE] ? '' : ' >'} * + * {
+               margin-block-start: ${this[SPACE]};
            }
 
-           ${attribute_vals[SPLIT_AFTER] ? `
+           ${this[SPLIT_AFTER] ? `
                [data-i="${style_id}"]:only-of-type {
                    block-size: 100%;
                }
 
-               [data-i="${style_id}"] > :nth-child(${attribute_vals[SPLIT_AFTER]}) {
+               [data-i="${style_id}"] > :nth-child(${this[SPLIT_AFTER]}) {
                    margin-block-end: auto;
                }`
                 : ''}

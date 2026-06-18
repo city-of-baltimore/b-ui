@@ -7,53 +7,18 @@ export function selectors_create(tag, identifier) {
     }
 }
 
-/**
-    * @param {string[]} attributes - list of attribute names
-    * @param {HTMLElement} el - html source to extract attribute values
-    * @returns {Record<string, undefined | null | boolean | string>} - record of {attribute: values}
-    */
-export function get_attribute_vals(attributes, el) {
-    /** @type {Record<string, undefined | null | boolean | string>}*/
-    let accumulator = {}
-    return attributes.reduce((acc, name) => {
-        if (el.hasAttribute(name)) {
-            /**@type {any}*/
-            const value = el.getAttribute(name)
-
-            // empty string as truthy in cases like
-            // `<b-frame rounded>` indicating a rounded element
-            const is_empty_string = value.length === 0
-            acc[name] = is_empty_string || string_to_type(value, typeof el[name])
-        } else if (el[name]) {
-            acc[name] = el[name]
-        }
-
-        return acc
-    }, accumulator)
-}
-
-function string_to_type(val, type) {
-    switch (type) {
-        case 'number':
-            return Number(val)
-        case 'boolean':
-            return Boolean(val)
-        default:
-            return val
-    }
-}
-
-
 /** GENERATE STYLE_ID
-    * Create a hash from given values
+    * Create a hash from component's prop values
     *
-    * @param {string} tag
-    * @param {Record<string, any>} attributes
+    * @param {HTMLElement} component - a custom element component
     */
-export function identifier_create(tag, attributes) {
-    let stringified_keys = "".concat(Object.entries(attributes).map(v => String(v[1])))
-    let hash = short_hash(stringified_keys)
-    return `${tag}-${hash}`
+export function identifier_create(component) {
+    const tag = component.constructor.tagName;
+    const attributes = component.constructor.props.map((name) => component[name]);
+
+    let stringified_vals = attributes.join('-');
+    let hash = short_hash(stringified_vals);
+    return `${tag}-${hash}`;
 }
 
 //@ts-ignore
@@ -69,8 +34,7 @@ export function htmx_integrate(custom_element) {
 }
 
 export function generate_styles(component) {
-    const attribute_vals = get_attribute_vals(component.constructor.props, component);
-    const style_id = identifier_create(component.constructor.tagName, attribute_vals);
+    const style_id = identifier_create(component);
 
     component.dataset.i = style_id;
     const existing_style_node = document.querySelector(`style#${style_id}`);
@@ -78,7 +42,7 @@ export function generate_styles(component) {
     if (!existing_style_node) {
         const style_node = document.createElement("style");
         style_node.innerText = `
-            ${component.styles(style_id, attribute_vals)}
+            ${component.styles(style_id)}
         `.replace(/\s\s+/g, ' ').trim();
 
         style_node.setAttribute("id", style_id);

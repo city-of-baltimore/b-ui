@@ -13,13 +13,13 @@ export default class BGrid extends Elena(HTMLElement) {
         generate_styles(this)
     }
 
-    styles(style_id, attribute_vals) {
-        let min_width = attribute_vals[ITEM_MIN];
+    styles(style_id) {
+        let min_width = this[ITEM_MIN];
 
         return (`
             [data-i="${style_id}"] {
                 display: grid;
-                grid-gap: ${attribute_vals[SPACE]};
+                grid-gap: ${this[SPACE]};
             }
 
             @supports (width: min(${min_width}, 100%)) {

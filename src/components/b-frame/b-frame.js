@@ -14,7 +14,7 @@ export default class BFrame extends Elena(HTMLElement) {
         generate_styles(this)
     }
 
-    styles(style_id, attribute_vals) {
+    styles(style_id) {
         let [n, d] = this.ratio.split(":")?.map(n => Number(n))
 
         return (`
@@ -29,7 +29,7 @@ export default class BFrame extends Elena(HTMLElement) {
                 justify-content: center;
                 align-items: center;
                 border: ${this[BORDER] ?
-                (typeof (attribute_vals[BORDER]) === 'string' ? attribute_vals[BORDER] : 'var(--box-border-thin)')
+                (typeof (this[BORDER]) === 'string' ? this[BORDER] : 'var(--box-border-thin)')
                 : 'unset'};
                 border-radius: ${this[ROUNDED] ? 'var(--radius)' : 'unset'};
             }

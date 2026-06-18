@@ -13,12 +13,12 @@ export default class BReel extends Elena(HTMLElement) {
         generate_styles(this)
     }
 
-    styles(style_id, attribute_vals) {
+    styles(style_id) {
         return (`
                 [data-i="${style_id}"] {
                     --track-color: var(--color-background);
                     --thumb-color: var(--color-foreground);
-                    --space: ${attribute_vals[COMPACT] ? "var(--s-4)" : attribute_vals[SPACE]};
+                    --space: ${this[COMPACT] ? "var(--s-4)" : this[SPACE]};
                     --item-width: calc(var(--s3)*5);
                     --height: auto;
 

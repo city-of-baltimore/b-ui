@@ -12,17 +12,17 @@ export default class BBox extends Elena(HTMLElement) {
         generate_styles(this)
     }
 
-    styles(style_id, attribute_vals) {
+    styles(style_id) {
         return (`
-      [data-i=${style_id}] {
-          display: block;
-          padding: var(--s-1);
-          border: ${attribute_vals[BORDER]};
-          background-color: var(--color-background);
-          border-radius: var(--s-1);
-          transition: background-color .1s ease-in, box-shadow .1s ease-in;
-          margin: var(--s0);
-      }
+          [data-i=${style_id}] {
+              display: block;
+              padding: var(--s-1);
+              border: ${this[BORDER]};
+              background-color: var(--color-background);
+              border-radius: var(--s-1);
+              transition: background-color .1s ease-in, box-shadow .1s ease-in;
+              margin: var(--s0);
+          }
     `)
     }
 }

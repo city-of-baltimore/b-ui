@@ -1,7 +1,6 @@
 import { Elena } from "@elenajs/core";
 import { CONTENT_MAX, CENTER_TEXT, GUTTERS, INTRINSIC } from "../../attributes.js";
 import { generate_styles } from "../../helpers.js";
-import { center_text } from "./b-center.stories.js";
 
 export default class BCenter extends Elena(HTMLElement) {
     static tagName = "b-center";
@@ -21,18 +20,18 @@ export default class BCenter extends Elena(HTMLElement) {
         generate_styles(this)
     }
 
-    styles(style_id, attribute_vals) {
+    styles(style_id) {
         return (`
             [data-i="${style_id}"] {
                 display: block;
                 box-sizing: content-box;
                 margin-inline: auto;
-                ${attribute_vals[CENTER_TEXT] ? "text-align: center;" : ""}
-                max-inline-size: ${attribute_vals[CONTENT_MAX]};
-                padding-inline-start: ${attribute_vals[GUTTERS]};
-                padding-inline-end: ${attribute_vals[GUTTERS]};
+                ${this[CENTER_TEXT] ? "text-align: center;" : ""}
+                max-inline-size: ${this[CONTENT_MAX]};
+                padding-inline-start: ${this[GUTTERS]};
+                padding-inline-end: ${this[GUTTERS]};
 
-                ${attribute_vals[INTRINSIC] ? `
+                ${this[INTRINSIC] ? `
                     display: flex;
                     flex-direction: column;
                     align-items: center;

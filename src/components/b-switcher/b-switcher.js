@@ -14,19 +14,19 @@ export default class BSwitcher extends Elena(HTMLElement) {
         generate_styles(this)
     }
 
-    styles(style_id, attribute_vals) {
-        const limit = attribute_vals[LIMIT] + 1;
+    styles(style_id) {
+        const limit = this[LIMIT] + 1;
 
         return (`
             [data-i="${style_id}"] {
                 display: flex;
                 flex-wrap: wrap;
-                gap: ${attribute_vals[SPACE]};
+                gap: ${this[SPACE]};
             }
 
             [data-i="${style_id}"] > * {
                 flex-grow: 1;
-                flex-basis: calc(( ${attribute_vals[THRESHOLD]} - 100%) * 999);
+                flex-basis: calc(( ${this[THRESHOLD]} - 100%) * 999);
             }
 
             [data-i="${style_id}"] > :nth-last-child(n+ ${limit}),
