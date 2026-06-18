@@ -1,5 +1,6 @@
 import './b-grid.js';
 import '../b-box/b-box.js';
+import { make_elements } from '../../stories/utils.js';
 
 export default {
     title: 'Atoms/b-grid',
@@ -13,27 +14,23 @@ export default {
     tags: ['autodocs'],
 };
 
-const elements = () => {
-    return new Array((Math.floor(Math.random() * (20 - 3)) + 3)).fill(0).map(() => {
-        const factor = Math.random();
-
-        return `
-            <div>
-                <style>
-                    me {
-                        min-height: calc(var(--s2) * ${factor});
-                        border: var(--box-border-thin);
-                    }
-                </style>
-            </div>`
-    }).join('')
+function gen(factor) {
+    return `
+        <div>
+            <style>
+                me {
+                    min-height: calc(var(--s2) * ${factor});
+                    border: var(--box-border-thin);
+                }
+            </style>
+        </div>`
 }
 
 export const Default = {
     render: () => {
         return (`
             <b-grid>
-                ${elements()}
+                ${make_elements({ min: 3, max: 20, gen })}
             </b-grid>
         `);
     },
@@ -43,7 +40,7 @@ export const custom_spacing = {
     render: () => {
         return (`
             <b-grid space="var(--s-5)">
-                ${elements()}
+                ${make_elements({ min: 3, max: 20, gen })}
             </b-grid>
         `);
     },
@@ -60,7 +57,7 @@ export const item_min_width = {
     render: () => {
         return (`
             <b-grid item-min="100px">
-                ${elements()}
+                ${make_elements({ min: 3, max: 20, gen })}
             </b-grid>
         `);
     },

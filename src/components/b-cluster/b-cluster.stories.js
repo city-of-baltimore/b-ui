@@ -1,6 +1,7 @@
 import './b-cluster.js';
 import '../b-box/b-box.js';
 import '../b-stack/b-stack.js';
+import { make_elements } from '../../stories/utils.js';
 
 export default {
     title: 'Atoms/b-cluster',
@@ -15,27 +16,24 @@ export default {
 };
 
 
-const elements = () => {
-    return new Array(3).fill(0).map(() => {
-        const width = Math.random();
-        return `
-            <div>
-                <style>
-                    me {
-                        width: calc(var(--s0) * ${width}); 
-                        height: 1rem;
-                        border: var(--box-border-thin);
-                    }
-                </style>
-            </div>`
-    }).join('')
+function gen(factor) {
+    return `
+        <div>
+            <style>
+                me {
+                    width: calc(var(--s0) * ${factor}); 
+                    height: 1rem;
+                    border: var(--box-border-thin);
+                }
+            </style>
+        </div>`
 }
 
 export const Default = {
     render: () => {
         return (`
             <b-cluster>
-                ${elements()}
+                ${make_elements({ min: 3, gen })}
             </b-cluster>
         `);
     },
@@ -45,7 +43,7 @@ export const custom_spacing = {
     render: () => {
         return (`
             <b-cluster space="var(--s-2)">
-                ${elements()}
+                ${make_elements({ min: 3, gen })}
             </b-cluster>
         `);
     },
@@ -70,7 +68,7 @@ export const justify = {
                         }
                     </style>
                     <b-cluster>
-                        ${elements()}
+                        ${make_elements({ min: 3, gen })}
                     </b-cluster>
                 </div>
                 <div>
@@ -81,7 +79,7 @@ export const justify = {
                         }
                     </style>
                     <b-cluster justify="center">
-                        ${elements()}
+                        ${make_elements({ min: 3, gen })}
                     </b-cluster>
                 </div>
                 <div>
@@ -92,7 +90,7 @@ export const justify = {
                         }
                     </style>
                     <b-cluster justify="flex-end">
-                        ${elements()}
+                        ${make_elements({ min: 3, gen })}
                     </b-cluster>
                 </div>
             </b-stack>
@@ -119,7 +117,7 @@ export const align = {
                         }
                     </style>
                     <b-cluster align="flex-start">
-                        ${elements()}
+                        ${make_elements({ min: 3, gen })}
                     </b-cluster>
                 </div>
 
@@ -131,7 +129,7 @@ export const align = {
                         }
                     </style>
                     <b-cluster>
-                        ${elements()}
+                        ${make_elements({ min: 3, gen })}
                     </b-cluster>
                 </div>
 
@@ -143,7 +141,7 @@ export const align = {
                         }
                     </style>
                     <b-cluster align="flex-end">
-                        ${elements()}
+                        ${make_elements({ min: 3, gen })}
                     </b-cluster>
                 </div>
             </b-stack>

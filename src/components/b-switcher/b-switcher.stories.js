@@ -1,5 +1,6 @@
 import './b-switcher.js';
 import '../b-box/b-box.js';
+import { make_elements } from '../../stories/utils.js';
 
 export default {
     title: 'Atoms/b-switcher',
@@ -14,27 +15,23 @@ export default {
     tags: ['autodocs'],
 };
 
-const elements = (min = 3, max = 20) => {
-    return new Array((Math.floor(Math.random() * (max - min)) + min)).fill(0).map(() => {
-        const factor = Math.random();
-
-        return `
-            <div>
-                <style>
-                    me {
-                        min-height: calc(var(--s2) * ${factor});
-                        border: var(--box-border-thin);
-                    }
-                </style>
-            </div>`
-    }).join('')
+function gen(factor) {
+    return `
+        <div>
+            <style>
+                me {
+                    min-height: calc(var(--s2) * ${factor});
+                    border: var(--box-border-thin);
+                }
+            </style>
+        </div>`
 }
 
 export const Default = {
     render: () => {
         return (`
             <b-switcher>
-                ${elements(4, 4)}
+                ${make_elements({ min: 4, gen })}
             </b-switcher>
         `);
     },
@@ -52,7 +49,7 @@ export const threshold = {
     render: () => {
         return (`
             <b-switcher threshold="calc(var(--s0) * 50)">
-                ${elements(4, 4)}
+                ${make_elements({ min: 4, gen })}
             </b-switcher>
         `);
     },
@@ -62,7 +59,7 @@ export const spacing = {
     render: () => {
         return (`
             <b-switcher space="var(--s-2)">
-                ${elements(4, 4)}
+                ${make_elements({ min: 4, gen })}
             </b-switcher>
         `);
     },
@@ -81,7 +78,7 @@ export const limit = {
     render: () => {
         return (`
             <b-switcher limit="5">
-                ${elements(6, 10)}
+                ${make_elements({ min: 6, max: 10, gen })}
             </b-switcher>
         `);
     },

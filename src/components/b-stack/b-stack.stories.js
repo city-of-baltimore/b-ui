@@ -1,5 +1,6 @@
 import './b-stack.js';
 import '../b-box/b-box.js';
+import { make_elements } from '../../stories/utils.js';
 
 export default {
     title: 'Atoms/b-stack',
@@ -13,13 +14,17 @@ export default {
     tags: ['autodocs'],
 };
 
+function gen(_) {
+    return `
+        <b-box></b-box>
+    `
+}
+
 export const Default = {
     render: () => {
         return (`
             <b-stack>
-                <b-box></b-box>
-                <b-box></b-box>
-                <b-box></b-box>
+                ${make_elements({ min: 3, gen })}
             </b-stack>
         `);
     },
@@ -30,9 +35,7 @@ export const custom_spacing = {
     render: () => {
         return (`
             <b-stack space="var(--s5)">
-                <b-box></b-box>
-                <b-box></b-box>
-                <b-box></b-box>
+                ${make_elements({ min: 3, gen })}
             </b-stack>
         `);
     },
@@ -43,16 +46,13 @@ export const nested = {
         return (`
             <b-stack space="var(--s5)">
                 <b-box>
-                    <b-box></b-box>
-                    <b-box></b-box>
+                    ${make_elements({ min: 2, gen })}
                 </b-box>
                 <b-box>
-                    <b-box></b-box>
-                    <b-box></b-box>
+                    ${make_elements({ min: 2, gen })}
                 </b-box>
                 <b-box>
-                    <b-box></b-box>
-                    <b-box></b-box>
+                    ${make_elements({ min: 2, gen })}
                 </b-box>
             </b-stack>
         `);
@@ -82,12 +82,10 @@ export const nested_recursive = {
                     <b-box></b-box>
                 </b-box>
                 <b-box>
-                    <b-box></b-box>
-                    <b-box></b-box>
+                    ${make_elements({ min: 2, gen })}
                 </b-box>
                 <b-box>
-                    <b-box></b-box>
-                    <b-box></b-box>
+                    ${make_elements({ min: 2, gen })}
                 </b-box>
             </b-stack>
         `);
@@ -112,14 +110,7 @@ export const splitting = {
                     }
                 </style>
                 <b-stack split-after='3' spacing='var(--s3)'>
-                    <b-box></b-box>
-                    <b-box></b-box>
-                    <b-box></b-box>
-                    <b-box></b-box>
-                    <b-box></b-box>
-                    <b-box></b-box>
-                    <b-box></b-box>
-                    <b-box></b-box>
+                    ${make_elements({ min: 4, max: 7, gen })}
                 </b-stack>
             </div>
         `);
