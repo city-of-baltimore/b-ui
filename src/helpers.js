@@ -19,15 +19,28 @@ export function get_attribute_vals(attributes, el) {
         if (el.hasAttribute(name)) {
             /**@type {any}*/
             const value = el.getAttribute(name)
-            //TODO: all html attributes are strings, string check might be unnecessary
-            const is_empty_string = typeof value === "string" && value.length === 0
-            acc[name] = is_empty_string || value
+
+            // empty string as truthy in cases like
+            // `<b-frame rounded>` indicating a rounded element
+            const is_empty_string = value.length === 0
+            acc[name] = is_empty_string || string_to_type(value, typeof el[name])
         } else if (el[name]) {
             acc[name] = el[name]
         }
 
         return acc
     }, accumulator)
+}
+
+function string_to_type(val, type) {
+    switch (type) {
+        case 'number':
+            return Number(val)
+        case 'boolean':
+            return Boolean(val)
+        default:
+            return val
+    }
 }
 
 
