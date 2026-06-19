@@ -1,12 +1,13 @@
 import { Elena } from "@elenajs/core";
-import { BORDER } from "../../attributes.js";
+import { BORDER, RADIUS } from "../../attributes.js";
 import { generate_styles } from "../../helpers.js";
 
 export default class BBox extends Elena(HTMLElement) {
     static tagName = "b-box";
-    static props = [BORDER];
+    static props = [BORDER, RADIUS];
 
     [BORDER] = 'var(--box-border-thin)';
+    [RADIUS] = 'var(--s-1)';
 
     willUpdate() {
         generate_styles(this)
@@ -14,15 +15,14 @@ export default class BBox extends Elena(HTMLElement) {
 
     styles(style_id) {
         return (`
-          [data-i=${style_id}] {
-              display: block;
-              padding: var(--s-1);
-              border: ${this[BORDER]};
-              background-color: var(--color-background);
-              border-radius: var(--s-1);
-              transition: background-color .1s ease-in, box-shadow .1s ease-in;
-              margin: var(--s0);
-          }
+            [data-i=${style_id}] {
+                display: block;
+                padding: var(--s-1);
+                border: ${this[BORDER]};
+                background-color: var(--color-background);
+                border-radius: ${this[RADIUS]};
+                transition: background-color .1s ease-in, box-shadow .1s ease-in;
+            }
     `)
     }
 }
