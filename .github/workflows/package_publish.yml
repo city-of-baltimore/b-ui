@@ -1,9 +1,9 @@
-name: Publish package to GitHub Packages 
+name: Publish package to GitHub Packages
 on:
   release:
     types: [published]
 jobs:
-  build:
+  build_and_deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -19,9 +19,20 @@ jobs:
           scope: '@balt-opi'
 
       - name: Install dependencies
-        run: yarn
+        run: npm
+
+      #build webcomponents into a package
+      - name: Bundle web components
+        run: |
+          sudo apt install mmv
+
+          # change file extention to story files so `elena build` ignores them
+          mmv -r './src/components/*/*.stories.*' '#1.stories.xd'
+          npx elena build
+          # restore to original file extention
+          mmv -r './src/components/*/*.stories.*' '#1.stories.js'
 
       - name: Publish package
-        run: yarn publish --access restricted
+        run: npm publish --access restricted
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
