@@ -24,6 +24,23 @@ export const Default = {
     },
 };
 
+export const no_border = {
+    parameters: {
+        docs: {
+            description: {
+                story: '`border` prop is equivalent to `border=\'\'`',
+            },
+        },
+    },
+    render: () => {
+        return (`
+            <b-frame border>
+                <img src="${city_ship}"/>
+            </b-frame>
+        `);
+    },
+};
+
 export const custom_aspect_ratio = {
     render: () => {
         return (`
@@ -35,13 +52,13 @@ export const custom_aspect_ratio = {
                         gap: var(--s0);
                     }
                 </style>
-                <b-frame border ratio="1:1">
+                <b-frame ratio="1:1">
                 </b-frame>
 
-                <b-frame border ratio="9:16">
+                <b-frame ratio="9:16">
                 </b-frame>
 
-                <b-frame border ratio="21:9">
+                <b-frame ratio="21:9">
                 </b-frame>
             </div>
         `);
@@ -75,10 +92,10 @@ export const custom_aspect_ratio_with_image = {
 };
 
 
-export const rounded = {
+export const square_corners = {
     render: () => {
         return (`
-            <b-frame border rounded>
+            <b-frame radius>
             </b-frame>
         `);
     },
@@ -87,7 +104,7 @@ export const rounded = {
 export const override_radius = {
     render: () => {
         return (`
-            <b-frame border rounded style="--radius: var(--s-1);">
+            <b-frame rounded radius='var(--s2)'>
             </b-frame>
         `);
     },
