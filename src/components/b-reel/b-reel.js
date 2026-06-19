@@ -7,7 +7,7 @@ export default class BReel extends Elena(HTMLElement) {
     static props = [COMPACT, SPACE];
 
     [COMPACT] = false;
-    [SPACE] = "var(--s0)";
+    [SPACE] = "var(--s-1)";
 
     willUpdate() {
         generate_styles(this)

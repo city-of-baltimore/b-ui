@@ -17,7 +17,7 @@ export default class BSidebar extends Elena(HTMLElement) {
     [SIDE] = "right";
     [SIDE_WIDTH] = "var(--s1)";
     [CONTENT_MIN] = MIN_CONTENT;
-    [SPACE] = "var(--s0)";
+    [SPACE] = "var(--s-1)";
     [NO_STRETCH] = false;
 
 

@@ -6,7 +6,7 @@ export default class BCluster extends Elena(HTMLElement) {
     static tagName = "b-cluster";
     static props = [SPACE, JUSTIFY, ALIGN];
 
-    [SPACE] = "var(--s0, 1rem)";
+    [SPACE] = "var(--s-1)";
     [JUSTIFY] = "flex-start";
     [ALIGN] = "center";
 

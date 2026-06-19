@@ -1,5 +1,7 @@
 import './b-imposter.js';
 import '../b-box/b-box.js';
+import '../b-stack/b-stack.js';
+
 import { make_elements, lorem_ipsum } from '../../stories/utils.js';
 
 export default {
@@ -32,34 +34,36 @@ export const Default = {
     },
     render: () => {
         return (`
-<b-box>
-    <div>
-        <style>
-            me {
-                width: fit-content;
-                margin: auto;
-            }
-        </style>
-        ${make_elements({ min: 2, gen })}
-    </div>
+<b-stack>
+    <b-box>
+        <div>
+            <style>
+                me {
+                    width: fit-content;
+                    margin: auto;
+                }
+            </style>
+            ${make_elements({ min: 2, gen })}
+        </div>
 
-    <b-imposter>
-        <b-box>
-        <h1>Floating content</h1>
-        </b-box>
-    </b-imposter>
-</b-box>
-<b-box>
-    <div>
-        <style>
-            me {
-                width: fit-content;
-                margin: auto;
-            }
-        </style>
-        ${make_elements({ min: 2, gen })}
-    </div>
-</b-box>
+        <b-imposter>
+            <b-box>
+            <h1>Floating content</h1>
+            </b-box>
+        </b-imposter>
+    </b-box>
+    <b-box>
+        <div>
+            <style>
+                me {
+                    width: fit-content;
+                    margin: auto;
+                }
+            </style>
+            ${make_elements({ min: 2, gen })}
+        </div>
+    </b-box>
+<b-stack>
         `);
     },
 };
@@ -74,44 +78,46 @@ export const relative_to_parent = {
     },
     render: () => {
         return (`
-<b-box>
-    <style>
-        me {
-            position: relative;
-        }
-    </style>
-    <div>
+<b-stack>
+    <b-box>
         <style>
             me {
-                width: fit-content;
-                margin: auto;
+                position: relative;
             }
         </style>
-        ${make_elements({ min: 2, gen })}
-    </div>
+        <div>
+            <style>
+                me {
+                    width: fit-content;
+                    margin: auto;
+                }
+            </style>
+            ${make_elements({ min: 2, gen })}
+        </div>
 
-    <b-imposter>
-        <b-box>
-        <h1>Floating content</h1>
-        </b-box>
-    </b-imposter>
-</b-box>
-<b-box>
-    <style>
-        me {
-            position: relative;
-        }
-    </style>
-    <div>
+        <b-imposter>
+            <b-box>
+            <h1>Floating content</h1>
+            </b-box>
+        </b-imposter>
+    </b-box>
+    <b-box>
         <style>
             me {
-                width: fit-content;
-                margin: auto;
+                position: relative;
             }
         </style>
-        ${make_elements({ min: 2, gen })}
-    </div>
-</b-box>
+        <div>
+            <style>
+                me {
+                    width: fit-content;
+                    margin: auto;
+                }
+            </style>
+            ${make_elements({ min: 2, gen })}
+        </div>
+    </b-box>
+</b-stack>
         `);
     },
 };
@@ -155,34 +161,36 @@ export const fixed = {
     },
     render: () => {
         return (`
-<b-box>
-    <div>
-        <style>
-            me {
-                width: fit-content;
-                margin: auto;
-            }
-        </style>
-        ${make_elements({ min: 2, gen })}
-    </div>
+<b-stack>
+    <b-box>
+        <div>
+            <style>
+                me {
+                    width: fit-content;
+                    margin: auto;
+                }
+            </style>
+            ${make_elements({ min: 2, gen })}
+        </div>
 
-    <b-imposter fixed>
-        <b-box>
-        <h1>Floating content</h1>
-        </b-box>
-    </b-imposter>
-</b-box>
-<b-box>
-    <div>
-        <style>
-            me {
-                width: fit-content;
-                margin: auto;
-            }
-        </style>
-        ${make_elements({ min: 4, gen })}
-    </div>
-</b-box>
+        <b-imposter fixed>
+            <b-box>
+            <h1>Floating content</h1>
+            </b-box>
+        </b-imposter>
+    </b-box>
+    <b-box>
+        <div>
+            <style>
+                me {
+                    width: fit-content;
+                    margin: auto;
+                }
+            </style>
+            ${make_elements({ min: 4, gen })}
+        </div>
+    </b-box>
+</b-stack>
         `);
     },
 };

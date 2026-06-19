@@ -44,15 +44,21 @@ export const custom_spacing = {
 export const nested = {
     render: () => {
         return (`
-            <b-stack space="var(--s5)">
+            <b-stack>
                 <b-box>
+                    <b-stack>
                     ${make_elements({ min: 2, gen })}
+                    </b-stack>
                 </b-box>
                 <b-box>
+                    <b-stack>
                     ${make_elements({ min: 2, gen })}
+                    </b-stack>
                 </b-box>
                 <b-box>
+                    <b-stack>
                     ${make_elements({ min: 2, gen })}
+                    </b-stack>
                 </b-box>
             </b-stack>
         `);
@@ -63,13 +69,15 @@ export const nested_recursive = {
     parameters: {
         docs: {
             description: {
-                story: '`recursive` applies the vertical spacing to all elements recursively.',
+                story: '`recursive` applies the vertical spacing to all elements recursively.\
+                Notice how in this story, we only have one parent stack unlike the previous story\
+                and it also affected text elements.',
             },
         },
     },
     render: () => {
         return (`
-            <b-stack recursive space="var(--s5)">
+            <b-stack recursive>
                 <b-box>
                     <b-box>
                         <h1>

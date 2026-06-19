@@ -7,7 +7,7 @@ export default class BGrid extends Elena(HTMLElement) {
     static props = [ITEM_MIN, SPACE];
 
     [ITEM_MIN] = "calc(var(--s3))";
-    [SPACE] = "var(--s0)";
+    [SPACE] = "var(--s-0)";
 
     willUpdate() {
         generate_styles(this)

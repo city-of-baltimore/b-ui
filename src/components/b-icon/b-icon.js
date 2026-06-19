@@ -6,7 +6,7 @@ export default class BIcon extends Elena(HTMLElement) {
     static tagName = "b-icon";
     static props = [SPACE];
 
-    [SPACE] = "";
+    [SPACE] = "var(--s-1)";
 
     willUpdate() {
         generate_styles(this)

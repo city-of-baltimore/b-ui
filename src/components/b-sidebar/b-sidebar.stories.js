@@ -50,8 +50,9 @@ export const content_min = {
     parameters: {
         docs: {
             description: {
-                story: "The minimum % width of the parent the main content occupies\
-                before wrapping. Minimum 50%",
+                story: 'The minimum % width of the parent the main content occupies\
+                before wrapping. Minimum is 50%. Make the viewport smaller and this\
+                story should wrap first.',
             },
         },
     },

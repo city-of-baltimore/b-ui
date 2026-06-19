@@ -6,7 +6,7 @@ export default class BSwitcher extends Elena(HTMLElement) {
     static tagName = "b-switcher";
     static props = [SPACE, THRESHOLD, LIMIT];
 
-    [SPACE] = "var(--s0)";
+    [SPACE] = "var(--s-1)";
     [THRESHOLD] = "var(--measure)";
     [LIMIT] = 4;
 

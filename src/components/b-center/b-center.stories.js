@@ -1,5 +1,6 @@
 import './b-center.js';
 import '../b-box/b-box.js';
+import '../b-stack/b-stack.js';
 
 export default {
     title: 'Atoms/b-center',
@@ -31,16 +32,18 @@ export const multiple_elements = {
     render: () => {
         return (`
             <b-center>
-                <b-box>
-                    <p>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </b-box>
-                <b-box>
-                    <p>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </b-box>
+                <b-stack>
+                    <b-box>
+                        <p>
+                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </b-box>
+                    <b-box>
+                        <p>
+                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </b-box>
+                </b-stack>
             </b-center>
         `);
     },
@@ -77,33 +80,35 @@ export const custom_gutters = {
     },
     render: () => {
         return (`
-            <b-center content-max="unset" gutters="var(--s-5)">
-                <b-box>
-                    <style>
-                        me {
-                            width: -moz-available;
-                            width: -webkit-fill-available;
-                        }
-                    </style>
-                    <p>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </b-box>
-            </b-center>
+            <b-stack>
+                <b-center content-max="unset" gutters="var(--s-5)">
+                    <b-box>
+                        <style>
+                            me {
+                                width: -moz-available;
+                                width: -webkit-fill-available;
+                            }
+                        </style>
+                        <p>
+                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </b-box>
+                </b-center>
 
-            <b-center content-max="unset" gutters="var(--s0)">
-                <b-box>
-                    <style>
-                        me {
-                            width: -moz-available;
-                            width: -webkit-fill-available;
-                        }
-                    </style>
-                    <p>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </b-box>
-            </b-center>
+                <b-center content-max="unset" gutters="var(--s0)">
+                    <b-box>
+                        <style>
+                            me {
+                                width: -moz-available;
+                                width: -webkit-fill-available;
+                            }
+                        </style>
+                        <p>
+                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </b-box>
+                </b-center>
+            </b-stack>
         `);
     },
 };
@@ -118,19 +123,19 @@ export const center_text = {
     },
     render: () => {
         return (`
-            <b-center id="hello" center-text content-max="unset" gutters="var(--s-5)">
-                <b-box>
-                    <style>
-                        me {
-                            width: -moz-available;
-                            width: -webkit-fill-available;
-                        }
-                    </style>
-                    <p>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </b-box>
-            </b-center>
+            <b-box>
+                <b-center id="hello" center-text content-max="unset" gutters="var(--s-5)">
+                        <style>
+                            me {
+                                width: -moz-available;
+                                width: -webkit-fill-available;
+                            }
+                        </style>
+                        <p>
+                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                </b-center>
+            </b-box>
         `);
     },
 };
