@@ -2,7 +2,7 @@ import './b-icon.js';
 import '../b-box/b-box.js';
 
 export default {
-    title: 'Atoms/b-icon',
+    title: 'Layout/b-icon',
     parameters: {
         docs: {
             description: {

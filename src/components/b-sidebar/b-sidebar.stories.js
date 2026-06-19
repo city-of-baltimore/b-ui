@@ -2,7 +2,7 @@ import './b-sidebar.js';
 import '../b-box/b-box.js';
 
 export default {
-    title: 'Atoms/b-sidebar',
+    title: 'Layout/b-sidebar',
     parameters: {
         docs: {
             description: {

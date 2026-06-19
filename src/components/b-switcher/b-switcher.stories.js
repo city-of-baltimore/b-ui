@@ -3,7 +3,7 @@ import '../b-box/b-box.js';
 import { make_elements } from '../../stories/utils.js';
 
 export default {
-    title: 'Atoms/b-switcher',
+    title: 'Layout/b-switcher',
     parameters: {
         docs: {
             description: {

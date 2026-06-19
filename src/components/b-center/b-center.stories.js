@@ -3,7 +3,7 @@ import '../b-box/b-box.js';
 import '../b-stack/b-stack.js';
 
 export default {
-    title: 'Atoms/b-center',
+    title: 'Layout/b-center',
     parameters: {
         docs: {
             description: {
@@ -117,14 +117,14 @@ export const center_text = {
     parameters: {
         docs: {
             description: {
-                story: '`center-text` center\'s text content',
+                story: '`text-center` center\'s text content',
             },
         },
     },
     render: () => {
         return (`
             <b-box>
-                <b-center id="hello" center-text content-max="unset" gutters="var(--s-5)">
+                <b-center id="hello" text-center content-max="unset" gutters="var(--s-5)">
                         <style>
                             me {
                                 width: -moz-available;

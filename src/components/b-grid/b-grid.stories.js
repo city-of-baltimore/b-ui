@@ -3,7 +3,7 @@ import '../b-box/b-box.js';
 import { make_elements } from '../../stories/utils.js';
 
 export default {
-    title: 'Atoms/b-grid',
+    title: 'Layout/b-grid',
     parameters: {
         docs: {
             description: {

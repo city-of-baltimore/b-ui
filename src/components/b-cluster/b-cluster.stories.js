@@ -4,7 +4,7 @@ import '../b-stack/b-stack.js';
 import { make_elements } from '../../stories/utils.js';
 
 export default {
-    title: 'Atoms/b-cluster',
+    title: 'Layout/b-cluster',
     parameters: {
         docs: {
             description: {
