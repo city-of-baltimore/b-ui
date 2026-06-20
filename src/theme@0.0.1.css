@@ -59,7 +59,7 @@
 
   /* BOX STYLES */
 
-  --box-border-thin: var(--s-5) solid var(--color-grey);
+  --box-border-thin: calc(var(--s-5) * .2) solid var(--color-grey);
 
 }
 

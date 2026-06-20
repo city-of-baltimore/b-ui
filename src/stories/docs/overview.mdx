@@ -1,21 +1,32 @@
-import { Meta } from "@storybook/addon-docs/blocks";
-
-export const RightArrow = () => <svg 
-    viewBox="0 0 14 14" 
-    width="8px" 
-    height="14px" 
-    style={{ 
-      marginLeft: '4px',
-      display: 'inline-block',
-      shapeRendering: 'inherit',
-      verticalAlign: 'middle',
-      fill: 'currentColor',
-      'path fill': 'currentColor'
-    }}
->
-  <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
-</svg>
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as frame_stories from '../../components/b-frame/b-frame.stories.js';
 
 <Meta title="Overview" />
 
-# OPI UI library
+# OPI UI library (bUI)
+This UI library is built to provide a set of framework agnostic building blocks
+to create **Baltimore City** branded web experiences. The focus is not app level
+pre-built "features", that is left to the consumer of this library. However, if
+a feature is common across products, it might be worth building them into this
+library.
+
+Delegate most if not all of the styling to this library. Use the components like
+you would normal `html` tags. They are **pre-styled** with the brand theme and
+example usage are documented here. Letting consumers focus on what they are
+building instead of worrying about how things will look.
+
+It is _**not**_ a general UI library, the lack of flexibility is a feature.
+Ideally, the components are used **as is** to keep the theme consistent across
+projects. There should be a very good reason to deviate from **defaults**.
+
+# How does it work?
+**bUI** is a collection of [web components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)
+making it possible to use them as you would normal `html` like so:
+
+<Canvas of={frame_stories.custom_aspect_ratio_with_image} sourceState='shown'/>
+
+All components are name in this pattern: `<b-component_name>` so they are easily
+recognizable and avoid clashes with native html elements. Keep in mind that
+custom elements are extended html elements. Technically what you could do with
+html elements can be done to custom elements, like custom css styles. But
+refrain from this except for rare edge cases.

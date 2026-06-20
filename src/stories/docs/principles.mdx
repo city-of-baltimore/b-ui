@@ -1,0 +1,65 @@
+import { Meta, Canvas, Markdown } from "@storybook/addon-docs/blocks";
+
+import * as bbox_stories from '../../components/b-box/b-box.stories.js';
+
+<Meta title="Design/Principles" />
+
+# Principles
+There are a lot of resources about UI design principles, [figma's blogposts](https://www.figma.com/resource-library/ui-design-principles/)
+is a good start. Keep these in mind when building the library. Figure out the
+design upfront so that consumers can spend more time building product features
+instead of reinventing/syncing the design.
+
+# Web component design
+## API
+This design system is specifically for the **City of Baltimore** so there's no need
+to be overly generic. Be minimal on the number of properties exposed to
+consumers. This keeps it simple and reduces variance in the look and feel of web
+products produced by different city agencies.
+
+Make props `boolean` if possible. Choose carefully which properties to turn on 
+or off to keep them minimal. As an example, if `b-box`'s background is supposed
+to be configurable, with 2 states: `transparent` or `filled`. Choose if it's either
+`transparent` or `filled` by default then expose the other as the `prop`.
+
+```html
+<!-- transparent by default -->
+<b-box filled>
+</b-box>
+
+<!-- filled by default -->
+<b-box transparent>
+</b-box>
+```
+
+TODO: still deciding if this is a good idea.
+
+However if a property isn't binary, needing to be configurable with custom
+values, provide a default value and expose the property. Continuing the previous
+example, `b-box`'s border property is like this.
+
+<Canvas of={bbox_stories.custom_border} sourceState='shown'/>
+
+The logic becomes somewhat the inverse to the boolean property. Providing the prop
+with no input like `<b-box border>` removes the default or sets it to `unset`.
+This is because an empty prop is equivalent to `<b-box border=''>`, _**all props
+in web components is a string**_. So it becomes an invalid css value and applies
+the default or inherited style.
+
+The downside of this is that consumers can provide any css values. (Although it
+is possible to enforce using css variables by checking if inputs include `var()`).
+I might do this.
+
+## Styling
+All default values should be defined in **[theme.css](?path=/docs/design-theme-css--docs)**
+as [`css variables`](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties). Then all components should use these variables for their own
+specific styles. Consumers are expected to know about them and use them to
+customize props that accept css values. Ideally with the [`calc()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/calc)
+for numeric values and [`color-mix()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/color-mix)
+for color values among other css functions.
+
+This improves maintainability. If for any reason in the future the theme needs
+to change, all relevant values are defined in one place. All decendants will
+just respond to the new values.
+
+

@@ -63,7 +63,7 @@ export const custom_border = {
 export const nested = {
     render: () => {
         return (`
-    <b-box rounded border>
+    <b-box border>
         <b-stack>
             <b-box>
                 <b-stack>
