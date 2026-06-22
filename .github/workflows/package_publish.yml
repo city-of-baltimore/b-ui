@@ -27,10 +27,10 @@ jobs:
           sudo apt install mmv
 
           # change file extention to story files so `elena build` ignores them
-          mmv -r './src/components/*/*.stories.*' '#1.stories.xd'
+          mmv -r './src/components/*/*/*.stories.*' '#1.stories.xd'
           npx elena build
           # restore to original file extention
-          mmv -r './src/components/*/*.stories.*' '#1.stories.js'
+          mmv -r './src/components/*/*/*.stories.*' '#1.stories.js'
 
       - name: Publish package
         run: npm publish --access restricted
