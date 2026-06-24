@@ -48,7 +48,11 @@
 
   /* BOX STYLES */
 
-  --box-border-thin: calc(var(--s-5) * .2) solid var(--color-grey);
+  --box-border-thin: calc(var(--s-5) * .2) solid var(--color-neutral);
+
+  /* TRANSITIONS */
+  --transition-curve: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-duration: 250ms;
 
 }
 
@@ -59,7 +63,8 @@ html[data-theme="light"] {
   --color-background: var(--color-white-off);
   --color-foreground: var(--color-black);
 
-  --color-grey: var(--color-grey-dark);
+  --color-neutral: var(--color-grey-dark);
+  --color-neutral-light: color-mix(in srgb, var(--color-grey-light), transparent 80%);
 
   --color-primary : var(--color-purple);
   --color-primary-dark : var(--color-purple-dark);

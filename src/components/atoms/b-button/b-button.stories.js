@@ -13,17 +13,34 @@ export default {
             },
         },
     },
+    argTypes: {
+        variant: {
+            description: 'Indicates severity of the action. Defaults as `primary` variant',
+            options: ['secondary', 'subtle', 'danger'],
+            control: {
+                type: 'radio'
+            }
+        },
+        text: {
+            control: {
+                type: 'text'
+            }
+        }
+    },
     tags: ['autodocs'],
 };
 
 export const Default = {
-    render: () => {
+    render: ({ variant, text }) => {
         return (`
-        <b-button>
-            Click
+        <b-button variant=${variant}>
+            ${text}
         </b-button>
        `);
     },
+    args: {
+        text: 'Click'
+    }
 };
 
 export const no_border = {

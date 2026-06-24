@@ -1,28 +1,69 @@
 import { Elena, html } from "@elenajs/core";
-import { BORDER, RADIUS, HREF, TYPE } from "../../../attributes.js";
+import { RADIUS, HREF, TYPE, VARIANT } from "../../../attributes.js";
 import { generate_styles } from "../../../helpers.js";
 
 export default class BButton extends Elena(HTMLElement) {
     static tagName = "b-button";
 
     static shadow = "open";
-    static props = [BORDER, RADIUS, HREF, TYPE];
+    static props = [RADIUS, HREF, TYPE, VARIANT];
     static parts = {
         button: 'button',
     };
 
-    [BORDER] = 'var(--box-border-thin)';
     [RADIUS] = 'var(--s-1)';
     [HREF] = '';
     [TYPE] = '';
+    [VARIANT] = '';
 
     willUpdate() {
         generate_styles(this);
     }
 
     styles(style_id) {
+        let variant_style = `
+            --color-background-hover: var(--color-purple-dark);
+
+            border: var(--box-border-thin);
+            background: var(--color-purple-dark);
+            color: var(--color-white-off);
+        `;
+
+        switch (this[VARIANT]) {
+            case 'secondary':
+                variant_style = `
+                    --color-background-hover: none;
+
+                    background: none;
+                    border: var(--box-border-thin);
+                    color: var(--color-black);
+                `;
+                break;
+            case 'subtle':
+                variant_style = `
+                    --color-background-hover: var(--color-neutral-light);
+
+                    background: none;
+                    color: var(--color-black);
+                    border: none;
+                    transition: background-color var(--transition-duration) cubic-bezier(0.4, 0, 0.2, 1);
+                `;
+                break;
+            case 'danger':
+                variant_style = `
+                    --color-background-hover: var(--color-warning);
+
+                    border: none;
+                    background: var(--color-warning);
+                    color: var(--color-white-off);
+                `;
+                break;
+        }
+
         return (`
             [data-i=${style_id}]::part(${this.constructor.parts.button}) {
+                --color-background-hover: unset;
+
                 width: fit-content;
                 border-radius: var(--s-1);
                 background: var(--color-foreground);
@@ -35,10 +76,17 @@ export default class BButton extends Elena(HTMLElement) {
 
                 outline: none;
                 box-shadow: none;
-                border: ${this[BORDER].length > 0 ? this[BORDER] : '0'};
+
+                ${variant_style}
             }
+
+            [data-i=${style_id}]::part(${this.constructor.parts.button}):hover {
+                background: var(--color-background-hover);
+            }
+
     `)
     }
+
 
     render() {
         if (this[HREF].length > 0) {
