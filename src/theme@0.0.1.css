@@ -12,7 +12,7 @@
   --s-3: calc(var(--s-2) / var(--s-ratio));
   --s-2: calc(var(--s-1) / var(--s-ratio));
   --s-1: calc(var(--s0)  / var(--s-ratio));
-  --s0: 1rem;
+  --s0: 1em;
   --s1: calc(var(--s0) * var(--s-ratio));
   --s2: calc(var(--s1) * var(--s-ratio));
   --s3: calc(var(--s2) * var(--s-ratio));
@@ -48,7 +48,8 @@
 
   /* BOX STYLES */
 
-  --box-border-thin: calc(var(--s-5) * .2) solid var(--color-neutral);
+  --border-width: 1px;
+  --box-border-thin: var(--border-width) solid color-mix(in oklab,var(--color-neutral)70%,transparent);
 
   /* TRANSITIONS */
   --transition-curve: cubic-bezier(0.4, 0, 0.2, 1);
@@ -84,12 +85,20 @@ html[data-theme="dark"] {
   --color-background: var(--color-purple-dark);
   --color-foreground: var(--color-white-off);
 
-  --color-grey: var(--color-grey-light);
+  --color-neutral: var(--color-grey-dark);
+  --color-neutral-light: color-mix(in srgb, var(--color-grey-light), transparent 80%);
+
+  --color-neutral: var(--color-grey-light);
 
   --color-primary : var(--color-purple-light);
   --color-primary-dark : var(--color-purple-dark);
   --color-accent-primary: var(--color-yellow);
   --color-accent-secondary: var(--color-cyan);
+
+  --color-confirm      : green;
+  --color-confirm-light: #62cb3b;
+  --color-warning      : #bf1818;
+  --color-warning-light: red;
 }
 
 h1,

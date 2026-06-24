@@ -34,3 +34,4 @@ export const MARGIN      = "margin";
 export const NAME        = "name";
 export const TYPE        = "type";
 export const VARIANT     = "variant";
+export const DISABLED    = "disabled";

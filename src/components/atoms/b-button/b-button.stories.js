@@ -43,14 +43,17 @@ export const Default = {
     }
 };
 
-export const no_border = {
-    render: () => {
+export const disabled = {
+    render: ({ variant, text }) => {
         return (`
-        <b-button border>
-            Click
+        <b-button variant=${variant} disabled>
+            ${text}
         </b-button>
        `);
     },
+    args: {
+        text: 'Click'
+    }
 };
 
 export const with_icon = {
