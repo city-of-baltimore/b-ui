@@ -22,3 +22,11 @@ export const Default = {
        `);
     },
 };
+
+export const area = {
+    render: () => {
+        return (`
+        <b-input area placeholder="placeholder"></b-input>
+       `);
+    },
+};

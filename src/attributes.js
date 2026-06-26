@@ -35,3 +35,5 @@ export const NAME        = "name";
 export const TYPE        = "type";
 export const VARIANT     = "variant";
 export const DISABLED    = "disabled";
+export const AREA        = "area";
+export const PLACEHOLDER = "placeholder";
