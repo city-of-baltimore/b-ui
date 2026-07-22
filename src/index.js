@@ -12,3 +12,6 @@ export * from './components/layout/b-stack/b-stack.js'
 export * from './components/layout/b-switcher/b-switcher.js'
 
 export * from './components/atoms/b-button/b-button.js'
+
+
+export * from './components/experimental/b-data-map/b-data-map.js'
