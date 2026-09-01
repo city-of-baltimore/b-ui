@@ -1,0 +1,21 @@
+import { Meta, Source, Markdown } from "@storybook/addon-docs/blocks";
+import theme from '../../tokens.css?raw';
+
+<Meta title="Design/tokens.css" />
+
+# Design Tokens
+
+This is the generated CSS file from the [design system](https://github.com/city-of-baltimore/design-system).
+All design tokens are declared as CSS variables. Strictly refer to them to keep
+components and products **in-theme**. 
+
+Any change to design tokens should be done in the design system repo.
+
+
+<Markdown>
+{`\`\`\`css
+/*Source: tokens.css*/
+
+${theme}
+\`\`\``}
+</Markdown>

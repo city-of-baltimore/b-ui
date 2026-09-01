@@ -53,7 +53,7 @@ export const custom_border = {
             <b-box border>
             </b-box>
 
-            <b-box border="var(--s-4) solid var(--color-purple-medium)">
+            <b-box border="var(--s-4) solid var(--bromo-color-plum-400)">
             </b-box>
         </b-stack>
    `);

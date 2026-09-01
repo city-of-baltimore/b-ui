@@ -51,7 +51,7 @@ is possible to enforce using css variables by checking if inputs include `var()`
 I might do this.
 
 ## Styling
-All default values should be defined in **[theme.css](?path=/docs/design-theme-css--docs)**
+All default values should be defined in **[tokens.css](?path=/docs/design-tokens-css--docs)**
 as [`css variables`](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties). Then all components should use these variables for their own
 specific styles. Consumers are expected to know about them and use them to
 customize props that accept css values. Ideally with the [`calc()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/calc)
@@ -60,6 +60,6 @@ for color values among other css functions.
 
 This improves maintainability. If for any reason in the future the theme needs
 to change, all relevant values are defined in one place. All decendants will
-just respond to the new values.
+automatically respond to the new values.
 
 
