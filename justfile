@@ -8,9 +8,9 @@ dev:
 
 # build for production
 build:
-    mmv -r './src/components/*/*/*.stories.*' '#2.stories.xd'
+    mmv -r './src/components/*/*/*.stories.*' '#3.stories.xd'
     npx elena build
-    mmv -r './src/components/*/*/*.stories.*' '#2.stories.js'
+    mmv -r './src/components/*/*/*.stories.*' '#3.stories.js'
 
 # run storybook
 storybook:
