@@ -2,7 +2,7 @@ import './b-sidebar.js';
 import '../b-box/b-box.js';
 
 export default {
-    title: 'Layout/b-sidebar',
+    title: 'web components/layout/b-sidebar',
     parameters: {
         docs: {
             description: {

@@ -3,7 +3,7 @@ import '../b-box/b-box.js';
 import { make_elements } from '../../../stories/utils.js';
 
 export default {
-    title: 'Layout/b-stack',
+    title: 'web components/layout/b-stack',
     parameters: {
         docs: {
             description: {

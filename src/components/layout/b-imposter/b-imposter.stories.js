@@ -5,7 +5,7 @@ import '../b-stack/b-stack.js';
 import { make_elements, lorem_ipsum } from '../../../stories/utils.js';
 
 export default {
-    title: 'Layout/b-imposter',
+    title: 'web components/layout/b-imposter',
     parameters: {
         docs: {
             description: {

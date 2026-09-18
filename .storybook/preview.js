@@ -1,8 +1,8 @@
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 
-import '../src/deps/reset@1.0.0.css';
 import '../src/theme@0.0.1.css';
 import '../src/tokens.css';
+import '../src/bundle.css';
 
 import '../src/deps/css-scope-inline@1.0.0';
 

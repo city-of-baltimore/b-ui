@@ -3,7 +3,7 @@ import '../b-box/b-box.js';
 import '../b-stack/b-stack.js';
 
 export default {
-    title: 'Layout/b-center',
+    title: 'web components/layout/b-center',
     parameters: {
         docs: {
             description: {

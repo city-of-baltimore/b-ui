@@ -5,7 +5,7 @@ import '../b-stack/b-stack.js';
 import { make_elements } from '../../../stories/utils.js';
 
 export default {
-    title: 'Layout/b-container',
+    title: 'web components/layout/b-container',
     parameters: {
         docs: {
             description: {

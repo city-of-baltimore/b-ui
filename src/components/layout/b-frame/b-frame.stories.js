@@ -3,7 +3,7 @@ import './b-frame.js';
 import city_ship from '../../../stories/assets/city-ship.png.webp';
 
 export default {
-    title: 'Layout/b-frame',
+    title: 'web components/layout/b-frame',
     parameters: {
         docs: {
             description: {

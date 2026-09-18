@@ -3,7 +3,7 @@ import './b-box.js';
 import '../b-stack/b-stack.js';
 
 export default {
-    title: 'Layout/b-box',
+    title: 'web components/layout/b-box',
     parameters: {
         docs: {
             description: {
