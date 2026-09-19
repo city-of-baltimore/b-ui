@@ -1,0 +1,54 @@
+import { Meta, Canvas, Markdown } from "@storybook/addon-docs/blocks";
+
+import * as ds_stories from '../../stories/docs/design-system.stories.js';
+
+<Meta title="Design System/Principles" />
+
+# Principles
+There are a lot of resources about UI design principles, [figma's blogposts](https://www.figma.com/resource-library/ui-design-principles/)
+is a good start. Keep these in mind when building and using the **Design
+System**.
+
+It's important to make the distinction between the **Design System** and **UI
+Library**. The Design System is a collection of values that determine the visual
+elements. These values are refered to as _**Design Tokens**_ or just
+_**Tokens**_. Below is an example set of tokens, the "raw" colors of this design
+system; [more](/docs/design-system-tokens--docs).
+Tokens are managed in the [design-system](https://github.com/city-of-baltimore/design-system)
+repository.
+
+> The **UI Library** is using _**tokens**_ the **Design System** provides.
+
+<Canvas of={ds_stories.Default}/>
+
+## What if the available tokens aren't enough?
+
+Having a minimal set of tokens intentional. It reduces the possible
+variations visual elements could differ. The goal of a design system is to
+have a consistent look and feel. But in some cases, you might need more than
+what's provided.
+
+You can derive the values you need by tweaking existing tokens. In CSS, you can
+do this with [`calc()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/calc)
+and [`color-mix()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/color-mix)
+along with other CSS functions! Since tokens are defined as CSS variables, you
+can refer to them like: `var(--bromo-color-plum-300)`. The design tokens are prefixed
+with `--bromo`, the `--` is required to define CSS variables.
+
+> As long as new values are derived from existing tokens, it should still be
+> cohesive.
+
+## Text Colors
+
+If there should be a corresponding text color for every background color, the
+number of tokens will be unmaintainable! Luckily, there's a CSS function find the
+contrasting color of a given color: [`contrast-color()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/contrast-color).
+
+If you had to set colors manually, use this pattern:
+```css
+div {
+    --shared-bg-color: var(--bromo-color-slate);
+    background-color: var(--shared-bg-color);
+    color: contrast-color(var(--shared-bg-color));
+}
+```

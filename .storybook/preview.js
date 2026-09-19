@@ -2,13 +2,14 @@ import { withThemeByDataAttribute } from '@storybook/addon-themes';
 
 import '../src/tokens.css';
 import '../src/deps/css-scope-inline@1.0.0';
+import '../src/deps/alpine@3.15.8.min';
 
 /** @type { import('@storybook/html-vite').Preview } */
 const preview = {
     parameters: {
         options: {
             storySort: {
-                order: ["Overview", "Install", "CDN", "*"]
+                order: ["Overview", "Install", "CDN", "Design System", "Principles", "Web Components", "*"]
             }
         },
         controls: {

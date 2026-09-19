@@ -21,6 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 26.5.1
+          package-manager-cache: false
       - name: Install dependencies
         run: npm i
 
