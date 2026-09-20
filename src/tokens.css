@@ -12,7 +12,7 @@
     --bromo-factor-surface-c-raised: 0.01;
     --bromo-factor-surface-c-default: 0.02;
     --bromo-factor-surface-c-lowered: 0.03;
-    --bromo-factor-border-l_base: -0.2;
+    --bromo-factor-border-l_base: 1;
     --bromo-color-plum-50: #613d64;
     --bromo-color-plum-100: #503257;
     --bromo-color-plum-200: #3f274a;

@@ -17,19 +17,19 @@ export default class BBox extends Elena(HTMLElement) {
 
     styles(style_id) {
         let border_style = `
-                    --surface-border-width: var(--border-width, var(--bromo-border-width-${BORDER_VARIANTS[this[BORDER]]}));
+                    --box-border-width: var(--border-width, var(--bromo-border-width-${BORDER_VARIANTS[this[BORDER]]}));
                     --l-base: var(--bromo-factor-border-l_base);
 
-                    border-width: var(--surface-border-width) !important;
+                    border-width: var(--box-border-width) !important;
                 `;
 
         return (`
                     [data-i=${style_id}] {
-                        --bg-color: var(--surface-color, var(--bromo-color-slate-50));
-                        --bg-color-resolved: oklch( from var(--bg-color) var(--surface-l-factor, var(--bromo-factor-surface-l-default)) var(--surface-c-factor, var(--bromo-factor-surface-c-default)) h);
+                        --bg-color: var(--box-color, var(--bromo-color-slate-50));
+                        --bg-color-resolved: oklch( from var(--bg-color) var(--box-l-factor, var(--bromo-factor-surface-l-default)) var(--surface-c-factor, var(--bromo-factor-surface-c-default)) h);
                         --contrast-color: contrast-color(var(--bg-color-resolved));
                         --border-l-factor: ${this[LEVEL] ? LEVEL_VARIANTS[this[LEVEL]].val.light : LEVEL_VARIANTS.default.val.light};
-                        --border-color-resolved: oklch(from var(--border-color, var(--bg-color)) calc(var(--l-base) * exp(l - (l * var(--border-l-factor))) + 1) c h);
+                        --border-color-resolved: oklch(from var(--border-color, var(--bg-color)) calc(var(--l-base) * exp(l - (l * var(--border-l-factor)))) c h);
 
                         display: block;
                         padding: var(--bromo-padding-block);
