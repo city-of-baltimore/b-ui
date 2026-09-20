@@ -1,9 +1,6 @@
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 
-import '../src/theme@0.0.1.css';
 import '../src/tokens.css';
-import '../src/bundle.css';
-
 import '../src/deps/css-scope-inline@1.0.0';
 
 /** @type { import('@storybook/html-vite').Preview } */
@@ -20,7 +17,6 @@ const preview = {
                 date: /Date$/i,
             },
         },
-
         a11y: {
             // 'todo' - show a11y violations in the test UI only
             // 'error' - fail CI on a11y violations
