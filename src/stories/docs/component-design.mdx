@@ -1,0 +1,72 @@
+import { Meta, Canvas, Markdown } from "@storybook/addon-docs/blocks";
+
+import * as bbox_stories from '../../components/layout/b-box/b-box.stories.js';
+
+<Meta title="Web Components/readme" />
+
+# Web Component Design
+## API
+This design system is specifically for the **City of Baltimore** so there's no need
+to be overly generic. Be minimal on the number of properties exposed to
+consumers. This keeps it simple and reduces variance in the look and feel of web
+products produced by different city agencies.
+
+### Boolean prop values
+Make props `boolean` if possible. Choose carefully which properties to turn on 
+or off to keep them minimal. As an example, if `b-box`'s background is supposed
+to be configurable, with 2 states: `transparent` or `filled`. Choose if it's either
+`transparent` or `filled` by default then expose the other as the `prop`.
+
+<sup>**NOTE:**</sup>
+This is just an example. The real `<b-box>` component is always filled.
+```html
+<!-- transparent by default -->
+<b-box filled>
+</b-box>
+
+<!-- filled by default -->
+<b-box transparent>
+</b-box>
+```
+
+### Option prop values
+However if a property isn't binary, needing to be configurable with **known
+values**, provide a default value and expose the property. Continuing the previous
+example, `b-box`'s radius property is like this.<sup>(for real)</sup>
+
+<Canvas of={bbox_stories.radius} sourceState='shown'/>
+
+The logic becomes somewhat the inverse to the boolean property. Providing the prop
+with no input like `<b-box radius>` removes the default or sets it to `unset`.
+This is because an empty prop is equivalent to `<b-box radius=''>`, _**all props
+in web components is a string**_. So it becomes an invalid css value and applies
+the default or inherited style.
+
+### Unknown prop values
+
+In some cases, it is impossible to prescribe a known set of values for a
+property. This is definitely true for `colors`. Unless we want the colors to be
+super rigid, it is better to be able to accept any valid value. For `<b-box>` a
+CSS variable is provided: `--box-color` which is unset by default, making it
+available for consumers to set via inline styles or in a separate CSS file.
+
+<Canvas of={bbox_stories.custom_background_color} sourceState='shown'/>
+
+The downside of this is that consumers can provide any valid CSS value. But as 
+the consumer, you are responsible to stick to the theme as close as possible by
+referencing the provided [design tokens](/docs/design-system-tokens-css--docs&globals=backgrounds.value:light;theme:light).
+<sup>insert spiderman quote</sup>
+
+## Styling
+All default values should be defined in **[tokens.css](?path=/docs/design-tokens-css--docs)**
+as [`css variables`](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties). Then all components should use these variables for their own
+specific styles. Consumers are expected to know about them and use them to
+customize props that accept css values. Ideally using [`calc()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/calc)
+for numeric values and [`color-mix()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/color-mix)
+for color values among other CSS color functions if needed values are not available in the design tokens.
+
+This improves maintainability. If for any reason in the future the theme needs
+to change, all relevant values are defined in one place. All descendants will
+automatically respond to the new values.
+
+

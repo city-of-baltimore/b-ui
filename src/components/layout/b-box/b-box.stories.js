@@ -146,8 +146,7 @@ export const radius = {
                 }
             </style>
             <b-stack>
-                <b-box radius>
-                </b-box>
+                <b-box radius></b-box>
                 <b-box radius="sm"></b-box>
                 <b-box radius="md"></b-box>
                 <b-box radius="lg"></b-box>
