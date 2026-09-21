@@ -10,7 +10,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: "Design System Tokens",
+                component: "Design System Tokens prefixed with: `--bromo-`",
             },
         },
     },
@@ -21,7 +21,7 @@ export const Default = {
     parameters: {
         docs: {
             description: {
-                story: "'Raw' colors. The middle values (`*-300` in this case) are based on the\
+                story: "'Raw' colors. The middle values (`--bromo-color-*-300` in this case) are based on the\
                 official Baltimore city colors. The lighter/darker steps are generated.\
                 The naming convention for the variants: The postfix are in `100` increments\
                 except for the start/end where the increment is `50`.",
@@ -232,7 +232,7 @@ export const alias = {
                         <b-stack>
                             <span>--bromo-padding-inline</span>
                             <span>--bromo-padding-block</span>
-                            <span>--bromo-padding-margin</span>
+                            <span>--bromo-margin</span>
                             <span>--bromo-gap</span>
                         </b-stack>
                         <b-stack>

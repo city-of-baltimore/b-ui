@@ -1,4 +1,5 @@
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
+import 'eyedropper-polyfill';
 
 import '../src/tokens.css';
 import '../src/deps/css-scope-inline@1.0.0';
