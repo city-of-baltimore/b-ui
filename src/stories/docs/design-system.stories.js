@@ -33,8 +33,6 @@ export const Default = {
         <b-box border radius>
             <style>
                 me {
-                    padding: var(--bromo-space-lg);
-
                     & span {
                         display: flex;
                     }
@@ -53,7 +51,7 @@ export const Default = {
 
             <b-center>
                 <b-stack>
-                    <span>
+                    <b-reel>
                             <div></div>
                             <div>plum</div>
                             <div>gold</div>
@@ -62,7 +60,7 @@ export const Default = {
                             <div>red</div>
                             <div>slate</div>
                             <div>teal</div>
-                    </span>
+                    </b-reel>
 
                     <b-reel>
                         <b-stack>
@@ -166,8 +164,6 @@ export const alias = {
         <b-box border radius>
             <style>
                 me {
-                    padding: var(--bromo-space-lg);
-
                     & span {
                         display: flex;
                     }
@@ -266,8 +262,6 @@ export const corners = {
         <b-box border radius>
             <style>
                 me {
-                    padding: var(--bromo-space-lg);
-
                     & span, div {
                         display: flex;
                         margin: var(--bromo-margin);
@@ -279,7 +273,7 @@ export const corners = {
 
                         background: var(--box-color);
                         width: var(--bromo-space-2xl);
-                        height: var(--bromo-space-3xl);
+                        height: var(--bromo-space-2xl);
                     }
 
                     &  b-stack > span {
@@ -293,24 +287,30 @@ export const corners = {
                 }
             </style>
             <b-stack>
-                <b-reel>
+                <b-reel style="--box-color: var(--bromo-color-slate-50)">
                     <b-stack>
                         <span>--bromo-radius-none</span>
                         <span>--bromo-radius-sm</span>
                         <span>--bromo-radius-md</span>
                         <span>--bromo-radius-lg</span>
                         <span>--bromo-radius-xl</span>
-                        <span>--bromo-radius-2xl</span>
-                        <span>--bromo-radius-3xl</span>
-                        <span>--bromo-radius-4xl</span>
-                        <span>--bromo-radius-full</span>
                     </b-stack>
-                    <b-stack style="--box-color: var(--bromo-color-slate-50)">
+                    <b-stack>
                         <div style="border-radius: var(--bromo-radius-none)"></div>
                         <div style="border-radius: var(--bromo-radius-sm)"></div>
                         <div style="border-radius: var(--bromo-radius-md)"></div>
                         <div style="border-radius: var(--bromo-radius-lg)"></div>
                         <div style="border-radius: var(--bromo-radius-xl)"></div>
+                    </b-stack>
+
+                    <b-stack>
+                        <span>--bromo-radius-2xl</span>
+                        <span>--bromo-radius-3xl</span>
+                        <span>--bromo-radius-4xl</span>
+                        <span>--bromo-radius-full</span>
+                    </b-stack>
+
+                    <b-stack>
                         <div style="border-radius: var(--bromo-radius-2xl)"></div>
                         <div style="border-radius: var(--bromo-radius-3xl)"></div>
                         <div style="border-radius: var(--bromo-radius-4xl)"></div>

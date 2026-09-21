@@ -6,7 +6,7 @@ export default class BStack extends Elena(HTMLElement) {
     static tagName = "b-stack";
     static props = [SPACE, RECURSIVE, SPLIT_AFTER];
 
-    [SPACE] = "var(--s-1)";
+    [SPACE] = "var(--bromo-space-xs)";
     [RECURSIVE] = false;
     [SPLIT_AFTER] = 0;
 
