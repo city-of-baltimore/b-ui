@@ -179,6 +179,14 @@ export const alias = {
                         height: var(--bromo-space-2xl);
                     }
 
+                    & b-stack {
+                        padding: var(--bromo-padding-inline);
+                    }
+
+                    & b-reel > b-reel {
+                        border: var(--bromo-border-width-thin) solid var(--bromo-color-slate-50);
+                    }
+
                     &  b-stack > span {
                         display: flex;
                         justify-content: end;
@@ -191,6 +199,7 @@ export const alias = {
             </style>
 
             <b-center>
+            <b-reel>
                 <b-reel>
                     <b-reel>
                         <b-stack>
@@ -226,9 +235,9 @@ export const alias = {
                             <div style="--box-color: var(--bromo-color-selection-bg)"></div>
                         </b-stack>
                     </b-reel>
-                </b-stack>
+                </b-reel>
 
-                <b-stack>
+                <b-reel>
                     <b-reel>
                         <b-stack>
                             <span>--bromo-padding-inline</span>
@@ -242,7 +251,23 @@ export const alias = {
                             <div></div>
                         </b-stack>
                     </b-reel>
-                </b-stack>
+                </b-reel>
+                <b-reel>
+                    <b-reel>
+                        <b-stack>
+                            <span>--bromo-body-small</span>
+                            <span>--bromo-body-default</span>
+                            <span>--bromo-body-large</span>
+                            <span>--bromo-body-large</span>
+                        </b-stack>
+                        <b-stack>
+                            <span style="font-size: var(--bromo-body-small);">lorem ipsum</span>
+                            <span style="font-size: var(--bromo-body-default);">lorem ipsum</span>
+                            <span style="font-size: var(--bromo-body-large);">lorem ipsum</span>
+                        </b-stack>
+                    </b-reel>
+                </b-reel>
+            </b-reel>
             </b-center>
         </b-box>
        `)
@@ -425,13 +450,177 @@ export const shadow = {
                     <span>--bromo-shadow-2xl</span>
                 </b-stack>
                 <b-stack>
-                    <div style="box-shadow: var(--bromo-shadow-2xs"></div>
-                    <div style="box-shadow: var(--bromo-shadow-xs"></div>
-                    <div style="box-shadow: var(--bromo-shadow-sm"></div>
-                    <div style="box-shadow: var(--bromo-shadow-md"></div>
-                    <div style="box-shadow: var(--bromo-shadow-lg"></div>
-                    <div style="box-shadow: var(--bromo-shadow-xl"></div>
-                    <div style="box-shadow: var(--bromo-shadow-2xl"></div>
+                    <div style="box-shadow: var(--bromo-shadow-2xs)"></div>
+                    <div style="box-shadow: var(--bromo-shadow-xs)"></div>
+                    <div style="box-shadow: var(--bromo-shadow-sm)"></div>
+                    <div style="box-shadow: var(--bromo-shadow-md)"></div>
+                    <div style="box-shadow: var(--bromo-shadow-lg)"></div>
+                    <div style="box-shadow: var(--bromo-shadow-xl)"></div>
+                    <div style="box-shadow: var(--bromo-shadow-2xl)"></div>
+                </b-stack>
+            </b-reel>
+        </b-box>
+        `)
+    }
+}
+
+export const text_sizes = {
+    parameters: {
+        docs: {
+            description: {
+            },
+        },
+    },
+    render: () => {
+        return (`
+        <b-box border radius>
+            <style>
+                me {
+                    & span, div {
+                        display: flex;
+                        margin: var(--bromo-margin);
+                    }
+
+                    & div {
+                        justify-content: start;
+                        align-items: center;
+
+                        background: var(--box-color);
+                        height: var(--bromo-space-2xl);
+                    }
+
+                    &  b-stack > span {
+                        display: flex;
+                        justify-content: end;
+                        align-items: center;
+
+                        height: var(--bromo-space-2xl);
+                        padding-inline: var(--bromo-space-lg);
+                    }
+                }
+            </style>
+            <b-reel>
+                <b-stack>
+                    <span>--bromo-text-xs</span>
+                    <span>--bromo-text-sm</span>
+                    <span>--bromo-text-base</span>
+                    <span>--bromo-text-lg</span>
+                    <span>--bromo-text-xl</span>
+                    <span>--bromo-text-2xl</span>
+                    <span>--bromo-text-3xl</span>
+                    <span>--bromo-text-4xl</span>
+                    <span>--bromo-text-5xl</span>
+                    <span>--bromo-text-6xl</span>
+                    <span>--bromo-text-7xl</span>
+                    <span>--bromo-text-8xl</span>
+                    <span>--bromo-text-9xl</span>
+                </b-stack>
+                <b-stack>
+                    <div><h1 style="font-size: var(--bromo-text-xs)">Text</h1></div>
+                    <div><h1 style="font-size: var(--bromo-text-sm)">Text</h1></div>
+                    <div><h1 style="font-size: var(--bromo-text-base)">Text</h1></div>
+                    <div><h1 style="font-size: var(--bromo-text-lg)">Text</h1></div>
+                    <div><h1 style="font-size: var(--bromo-text-xl)">Text</h1></div>
+                    <div><h1 style="font-size: var(--bromo-text-2xl)">Text</h1></div>
+                    <div><h1 style="font-size: var(--bromo-text-3xl)">Text</h1></div>
+                    <div><h1 style="font-size: var(--bromo-text-4xl)">Text</h1></div>
+                    <div><h1 style="font-size: var(--bromo-text-5xl)">Text</h1></div>
+                    <div><h1 style="font-size: var(--bromo-text-6xl)">Text</h1></div>
+                    <div><h1 style="font-size: var(--bromo-text-7xl)">Text</h1></div>
+                    <div><h1 style="font-size: var(--bromo-text-8xl)">Text</h1></div>
+                    <div><h1 style="font-size: var(--bromo-text-9xl)">Text</h1></div>
+                </b-stack>
+            </b-reel>
+        </b-box>
+        `)
+    }
+}
+
+
+export const space = {
+    parameters: {
+        docs: {
+            description: {
+                story: "Values used for padding and margins."
+            },
+        },
+    },
+    render: () => {
+        return (`
+        <b-box border radius>
+            <style>
+                me {
+                    & span, div {
+                        display: flex;
+                        margin: var(--bromo-margin);
+                    }
+
+                    & span {
+                        & div {
+                            justify-content: start;
+                            align-items: center;
+
+                            background: linear-gradient(90deg, var(--bromo-color-transparent) 0%, rgba(from var(--bromo-color-slate-50) r g b / 0.5) 70%, var(--bromo-color-slate-50) 100%);
+                            border-right: var(--bromo-border-width-thick) solid var(--bromo-color-green-100);
+                            height: var(--bromo-space-2xl);
+                            width: var(--bromo-space-2xl);
+                        }
+                        & span {
+                            background: linear-gradient(90deg, var(--bromo-color-slate-50) 0%, rgba(from var(--bromo-color-slate-50) r g b / 0.5) 30%, var(--bromo-color-transparent) 100%);
+                            border-left: var(--bromo-border-width-thick) solid var(--bromo-color-green-100);
+                            height: var(--bromo-space-2xl);
+                            width: var(--bromo-space-2xl);
+                        }
+                    }
+
+                    &  b-stack > span {
+                        display: flex;
+                        justify-content: end;
+                        align-items: center;
+
+                        height: var(--bromo-space-2xl);
+                        padding-inline: var(--bromo-space-lg);
+                    }
+                }
+            </style>
+            <b-reel>
+                <b-stack>
+                    <span>--bromo-space-3xs</span>
+                    <span>--bromo-space-2xs</span>
+                    <span>--bromo-space-xs</span>
+                    <span>--bromo-space-sm</span>
+                    <span>--bromo-space-md</span>
+                    <span>--bromo-space-lg</span>
+                    <span>--bromo-space-xl</span>
+                    <span>--bromo-space-2xl</span>
+                    <span>--bromo-space-3xl</span>
+                    <span>--bromo-space-3xs-2xs</span>
+                    <span>--bromo-space-2xs-xs</span>
+                    <span>--bromo-space-xs-sm</span>
+                    <span>--bromo-space-sm-md</span>
+                    <span>--bromo-space-md-lg</span>
+                    <span>--bromo-space-lg-xl</span>
+                    <span>--bromo-space-xl-2xl</span>
+                    <span>--bromo-space-2xl-3xl</span>
+                </b-stack>
+                <b-stack>
+                    <span><div style="margin-inline-end: var(--bromo-space-3xs);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-2xs);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-xs);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-sm);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-md);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-lg);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-xl);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-2xl);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-3xl);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-3xs-2xs);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-2xs-xs);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-xs-sm);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-sm-md);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-md-lg);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-lg-xl);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-xl-2xl);"></div> <span></span></span>
+                    <span><div style="margin-inline-end: var(--bromo-space-2xl-3xl);"></div> <span></span></span>
                 </b-stack>
             </b-reel>
         </b-box>
