@@ -10,7 +10,8 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: "Design System Tokens prefixed with: `--bromo-`",
+                component: "Design System Tokens prefixed with: `--bromo-`. These are just a subset of the available tokens, see <a href='/docs/design-system-tokens-css--docs'>tokens.css</a>\
+                for the exhaustive list.",
             },
         },
     },
@@ -252,8 +253,6 @@ export const corners = {
     parameters: {
         docs: {
             description: {
-                story: "Aliases are tokens with semantic meaning. Making the most common\
-                values easy to remember.",
             },
         },
     },
@@ -323,4 +322,57 @@ export const corners = {
     }
 }
 
+export const borders = {
+    parameters: {
+        docs: {
+            description: {
+            },
+        },
+    },
+    render: () => {
+        return (`
+        <b-box border radius>
+            <style>
+                me {
+                    & span, div {
+                        display: flex;
+                        margin: var(--bromo-margin);
+                    }
 
+                    & b-box {
+                        justify-content: center;
+                        align-items: center;
+
+                        background: var(--box-color);
+                        width: var(--bromo-space-2xl);
+                        height: var(--bromo-space-2xl);
+                    }
+
+                    &  b-stack > span {
+                        display: flex;
+                        justify-content: end;
+                        align-items: center;
+
+                        height: var(--bromo-space-2xl);
+                        padding-inline: var(--bromo-space-lg);
+                    }
+                }
+            </style>
+            <b-reel>
+                <b-stack>
+                    <span>--bromo-border-width-hairline</span>
+                    <span>--bromo-border-width-thin</span>
+                    <span>--bromo-border-width-thick</span>
+                    <span>--bromo-border-width-thicker</span>
+                </b-stack>
+                <b-stack>
+                    <b-box border="hairline"></b-box>
+                    <b-box border="thin"></b-box>
+                    <b-box border="thick"></b-box>
+                    <b-box border="thicker"></b-box>
+                </b-stack>
+            </b-reel>
+        </b-box>
+        `)
+    }
+}
