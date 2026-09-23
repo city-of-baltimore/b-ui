@@ -1,4 +1,5 @@
 import { fn } from 'storybook/test';
+import { __BOX_COLOR } from '../../../helpers.js'
 import './b-box.js';
 import '../b-stack/b-stack.js';
 
@@ -16,7 +17,7 @@ export default {
     component: 'b-box',
 
     argsTypes: {
-        "--box-color": {
+        [__BOX_COLOR]: {
             control: {
                 default: "--bromo-color-slate-50",
                 type: "string"
@@ -28,19 +29,18 @@ export default {
 
 export const Default = {
     args: {
-        '--box-color': '--bromo-color-slate-50'
+        [__BOX_COLOR]: '--bromo-color-slate-50'
     },
     render: (args) => {
         return (`
         <b-box border radius>
             <style>
                 me {
-                    --box-color: var(${args["--box-color"]});
                     padding: var(--bromo-space-lg);
                     background: color-mix(in oklch, contrast-color(var(--bg-color-resolved)) 20%, transparent);
                 }
             </style>
-            <b-box border>
+            <b-box border style="--box-color: var(${args[__BOX_COLOR]});">
             </b-box>
         </b-box>
        `);

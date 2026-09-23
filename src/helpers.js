@@ -1,5 +1,7 @@
 import short_hash from './deps/shorthash2@1.0.5.js'
 
+export const __BOX_COLOR = '--box-color';
+
 export function selectors_create(tag, identifier) {
     return {
         nor: `[data-i=${identifier}]`,

@@ -317,8 +317,8 @@ export const corners = {
                     </b-stack>
                 </b-reel>
             </b-stack>
-        </b-box>
-        `)
+</b-box>
+`)
     }
 }
 
@@ -370,6 +370,68 @@ export const borders = {
                     <b-box border="thin"></b-box>
                     <b-box border="thick"></b-box>
                     <b-box border="thicker"></b-box>
+                </b-stack>
+            </b-reel>
+        </b-box>
+        `)
+    }
+}
+
+
+export const shadow = {
+    parameters: {
+        docs: {
+            description: {
+            },
+        },
+    },
+    render: () => {
+        return (`
+        <b-box border radius>
+            <style>
+                me {
+                    & span, div {
+                        display: flex;
+                        margin: var(--bromo-margin);
+                    }
+
+                    & div {
+                        justify-content: center;
+                        align-items: center;
+
+                        background: var(--box-color);
+                        width: var(--bromo-space-2xl);
+                        height: var(--bromo-space-2xl);
+                    }
+
+                    &  b-stack > span {
+                        display: flex;
+                        justify-content: end;
+                        align-items: center;
+
+                        height: var(--bromo-space-2xl);
+                        padding-inline: var(--bromo-space-lg);
+                    }
+                }
+            </style>
+            <b-reel>
+                <b-stack>
+                    <span>--bromo-shadow-2xs</span>
+                    <span>--bromo-shadow-xs</span>
+                    <span>--bromo-shadow-sm</span>
+                    <span>--bromo-shadow-md</span>
+                    <span>--bromo-shadow-lg</span>
+                    <span>--bromo-shadow-xl</span>
+                    <span>--bromo-shadow-2xl</span>
+                </b-stack>
+                <b-stack>
+                    <div style="box-shadow: var(--bromo-shadow-2xs"></div>
+                    <div style="box-shadow: var(--bromo-shadow-xs"></div>
+                    <div style="box-shadow: var(--bromo-shadow-sm"></div>
+                    <div style="box-shadow: var(--bromo-shadow-md"></div>
+                    <div style="box-shadow: var(--bromo-shadow-lg"></div>
+                    <div style="box-shadow: var(--bromo-shadow-xl"></div>
+                    <div style="box-shadow: var(--bromo-shadow-2xl"></div>
                 </b-stack>
             </b-reel>
         </b-box>
