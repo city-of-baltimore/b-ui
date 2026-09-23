@@ -1,5 +1,13 @@
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import 'eyedropper-polyfill';
+import {
+    Title,
+    Subtitle,
+    Description,
+    Primary,
+    Controls,
+    Stories,
+} from '@storybook/addon-docs/blocks';
 
 import '../src/tokens.css';
 import '../src/deps/css-scope-inline@1.0.0';
@@ -18,6 +26,18 @@ const preview = {
                 color: /(background|color)$/i,
                 date: /Date$/i,
             },
+        },
+        docs: {
+            page: () => (
+                <>
+                    <Title />
+                    <Subtitle />
+                    <Description />
+                    <Primary />
+                    <Controls />
+                    <Stories includePrimary={false} />
+                </>
+            ),
         },
         a11y: {
             // 'todo' - show a11y violations in the test UI only

@@ -17,7 +17,7 @@ export default {
     tags: ['autodocs'],
 };
 
-export const Default = {
+export const raw_colors = {
     parameters: {
         docs: {
             description: {

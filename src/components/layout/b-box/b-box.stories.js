@@ -12,15 +12,30 @@ export default {
             },
         },
     },
+
+    component: 'b-box',
+
+    argsTypes: {
+        "--box-color": {
+            control: {
+                default: "--bromo-color-slate-50",
+                type: "string"
+            }
+        }
+    },
     tags: ['autodocs'],
 };
 
 export const Default = {
-    render: () => {
+    args: {
+        '--box-color': '--bromo-color-slate-50'
+    },
+    render: (args) => {
         return (`
         <b-box border radius>
             <style>
                 me {
+                    --box-color: var(${args["--box-color"]});
                     padding: var(--bromo-space-lg);
                     background: color-mix(in oklch, contrast-color(var(--bg-color-resolved)) 20%, transparent);
                 }
@@ -33,6 +48,9 @@ export const Default = {
 };
 
 export const levels = {
+    args: {
+        "--box-color:": "--bromo-color-slate-50"
+    },
     parameters: {
         docs: {
             description: {
@@ -40,11 +58,12 @@ export const levels = {
             },
         },
     },
-    render: () => {
+    render: (args) => {
         return (`
         <b-box border radius>
             <style>
                 me {
+                    --box-color: var(${args["--box-color:"]});
                     padding: var(--bromo-space-lg);
                     background: color-mix(in oklch, contrast-color(var(--bg-color-resolved)) 20%, transparent);
                 }
