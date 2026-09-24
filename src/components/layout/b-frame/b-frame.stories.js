@@ -1,5 +1,6 @@
 import { fn } from 'storybook/test';
 import './b-frame.js';
+import '../b-reel/b-reel.js';
 import city_ship from '../../../stories/assets/city-ship.png.webp';
 
 export default {
@@ -49,7 +50,11 @@ export const custom_aspect_ratio = {
                     me {
                         display: flex;
                         height: 15rem;
-                        gap: var(--s0);
+                        gap: var(--bromo-space-sm);
+
+                        & b-frame {
+                            background: var(--bromo-color-slate-50);
+                        }
                     }
                 </style>
                 <b-frame ratio="1:1">
@@ -73,7 +78,11 @@ export const custom_aspect_ratio_with_image = {
                     me {
                         display: flex;
                         height: 15rem;
-                        gap: var(--s0);
+                        gap: var(--bromo-space-sm);
+
+                        & b-frame {
+                            background: var(--bromo-color-slate-50);
+                        }
                     }
                 </style>
                 <b-frame ratio="1:1">
@@ -96,6 +105,11 @@ export const square_corners = {
     render: () => {
         return (`
             <b-frame radius>
+                <style>
+                    me {
+                        background: var(--bromo-color-slate-50);
+                    }
+                </style>
             </b-frame>
         `);
     },
@@ -104,7 +118,12 @@ export const square_corners = {
 export const override_radius = {
     render: () => {
         return (`
-            <b-frame rounded radius='var(--s2)'>
+            <b-frame style="--box-radius: 10rem">
+                <style>
+                    me {
+                        background: var(--bromo-color-slate-50);
+                    }
+                </style>
             </b-frame>
         `);
     },

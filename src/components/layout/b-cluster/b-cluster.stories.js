@@ -21,9 +21,9 @@ function gen(factor) {
         <div>
             <style>
                 me {
-                    width: calc(var(--s0) * ${factor}); 
+                    width: calc(var(--bromo-space-sm) * ${factor}); 
                     height: 1rem;
-                    border: var(--box-border-thin);
+                    border: var(--bromo-border-width-thin) solid var(--bromo-color-slate-50);
                 }
             </style>
         </div>`
@@ -42,7 +42,7 @@ export const Default = {
 export const custom_spacing = {
     render: () => {
         return (`
-            <b-cluster space="var(--s-2)">
+            <b-cluster style="--gap: 4rem">
                 ${make_elements({ min: 3, gen })}
             </b-cluster>
         `);
@@ -109,11 +109,16 @@ export const align = {
     render: () => {
         return (`
             <b-stack>
+                <style>
+                    me div > b-cluster{
+                        border: var(--bromo-border-width-thin) solid var(--bromo-color-slate-50);
+                        padding: var(--bromo-space-sm);
+                    }
+                </style>
                 <div>
                     <style>
                         me {
                             height: 10rem;
-                            border: var(--box-border-thin);
                         }
                     </style>
                     <b-cluster align="flex-start">
@@ -125,7 +130,6 @@ export const align = {
                     <style>
                         me {
                             height: 10rem;
-                            border: var(--box-border-thin);
                         }
                     </style>
                     <b-cluster>
@@ -137,7 +141,6 @@ export const align = {
                     <style>
                         me {
                             height: 10rem;
-                            border: var(--box-border-thin);
                         }
                     </style>
                     <b-cluster align="flex-end">

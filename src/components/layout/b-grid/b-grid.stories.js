@@ -19,8 +19,8 @@ function gen(factor) {
         <div>
             <style>
                 me {
-                    min-height: calc(var(--s2) * ${factor});
-                    border: var(--box-border-thin);
+                    min-height: calc(var(--bromo-space-lg) * ${factor});
+                    border: var(--bromo-border-width-thin) solid var(--bromo-color-slate-50);
                 }
             </style>
         </div>`
@@ -36,10 +36,10 @@ export const Default = {
     },
 };
 
-export const custom_spacing = {
+export const spacing = {
     render: () => {
         return (`
-            <b-grid space="var(--s-5)">
+            <b-grid space="sm">
                 ${make_elements({ min: 3, max: 20, gen })}
             </b-grid>
         `);
@@ -56,7 +56,7 @@ export const item_min_width = {
     },
     render: () => {
         return (`
-            <b-grid item-min="100px">
+            <b-grid style="--item-min-width: 500px">
                 ${make_elements({ min: 3, max: 20, gen })}
             </b-grid>
         `);

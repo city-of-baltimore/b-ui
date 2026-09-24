@@ -38,7 +38,7 @@ export const left_side = {
 export const custom_side_width = {
     render: () => {
         return (`
-            <b-sidebar side-width="calc(var(--s1) * 5)">
+            <b-sidebar style="--side-width: calc(var(--bromo-size-step-3) * 5)">
                 <b-box></b-box>
                 <b-box></b-box>
             </b-sidebar>

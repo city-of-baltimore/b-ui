@@ -1,13 +1,14 @@
 import { Elena } from "@elenajs/core";
-import { COMPACT, SPACE } from "../../../attributes.js";
+import { /*COMPACT,*/ SPACE } from "../../../attributes.js";
+import { SPACE_VARIANTS } from "../../../variants.js";
 import { generate_styles } from "../../../helpers.js";
 
 export default class BReel extends Elena(HTMLElement) {
     static tagName = "b-reel";
-    static props = [COMPACT, SPACE];
+    static props = [/*COMPACT,*/ SPACE];
 
-    [COMPACT] = false;
-    [SPACE] = "var(--bromo-space-xs)";
+    // [COMPACT] = false;
+    [SPACE] = SPACE_VARIANTS.sm;
 
     willUpdate() {
         generate_styles(this)
@@ -16,10 +17,10 @@ export default class BReel extends Elena(HTMLElement) {
     styles(style_id) {
         return (`
                 [data-i="${style_id}"] {
-                    --track-color: var(--color-background);
-                    --thumb-color: var(--color-foreground);
-                    --space: ${this[COMPACT] ? "var(--s-4)" : this[SPACE]};
-                    --item-width: calc(var(--s3)*5);
+                    --track-color: var(--bromo-color-slate-50);
+                    --thumb-color: oklch(from var(--track-color) .4 c h);
+                    --space: var(--bromo-space-${this[SPACE]});
+                    --item-width: calc(var(--bromo-size-step-4)*3);
                     --height: auto;
 
                     display: flex;

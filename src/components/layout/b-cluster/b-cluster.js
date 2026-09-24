@@ -1,14 +1,15 @@
 import { Elena } from "@elenajs/core";
 import { SPACE, JUSTIFY, ALIGN } from "../../../attributes.js";
+import { SPACE_VARIANTS, JUSTIFY_VARIANTS, ALIGN_VARIANTS } from "../../../variants.js";
 import { generate_styles } from "../../../helpers.js";
 
 export default class BCluster extends Elena(HTMLElement) {
     static tagName = "b-cluster";
     static props = [SPACE, JUSTIFY, ALIGN];
 
-    [SPACE] = "var(--s-1)";
-    [JUSTIFY] = "flex-start";
-    [ALIGN] = "center";
+    [SPACE] = SPACE_VARIANTS.sm;
+    [JUSTIFY] = JUSTIFY_VARIANTS.start;
+    [ALIGN] = ALIGN_VARIANTS.center;
 
     willUpdate() {
         generate_styles(this)
@@ -17,9 +18,10 @@ export default class BCluster extends Elena(HTMLElement) {
     styles(style_id) {
         return (`
             [data-i="${style_id}"] {
+                --gap: var(--bromo-space-${this[SPACE]});
                 display: flex;
                 flex-wrap: wrap;
-                gap: ${this[SPACE]};
+                gap: var(--gap);
                 justify-content: ${this[JUSTIFY]};
                 align-items: ${this[ALIGN]};
                 height: 100%;

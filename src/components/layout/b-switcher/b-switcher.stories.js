@@ -20,9 +20,8 @@ function gen(factor) {
         <div>
             <style>
                 me {
-                    min-height: calc(var(--s2) * ${factor});
-                    border: var(--box-border-thin);
-                }
+                    min-height: calc(var(--bromo-space-sm) * ${factor});
+                    border: var(--bromo-border-width-thin) solid var(--bromo-color-slate-50); }
             </style>
         </div>`
 }
@@ -48,7 +47,7 @@ export const threshold = {
     },
     render: () => {
         return (`
-            <b-switcher threshold="calc(var(--s0) * 50)">
+            <b-switcher threshold="lg">
                 ${make_elements({ min: 4, gen })}
             </b-switcher>
         `);
@@ -58,7 +57,7 @@ export const threshold = {
 export const spacing = {
     render: () => {
         return (`
-            <b-switcher space="var(--s-2)">
+            <b-switcher space="xl">
                 ${make_elements({ min: 4, gen })}
             </b-switcher>
         `);
