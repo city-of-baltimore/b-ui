@@ -1,5 +1,7 @@
 import { fn } from 'storybook/test';
-import { __BOX_COLOR } from '../../../helpers.js'
+import { __BOX_COLOR } from '../../../css_var_params.js'
+import { BORDER, LEVEL, RADIUS } from '../../../attributes.js';
+import { BORDER_VARIANTS, RADIUS_VARIANTS, LEVEL_VARIANTS } from "../../../variants.js";
 import './b-box.js';
 import '../b-stack/b-stack.js';
 
@@ -14,22 +16,36 @@ export default {
         },
     },
 
-    component: 'b-box',
-
     argsTypes: {
         [__BOX_COLOR]: {
             control: {
-                default: "--bromo-color-slate-50",
                 type: "string"
-            }
-        }
+            },
+            default: "--bromo-color-slate-50",
+        },
+        [BORDER]: {
+            options: Object.keys(BORDER_VARIANTS),
+            default: BORDER_VARIANTS.thin,
+            control: { type: "select" }
+        },
+        [RADIUS]: {
+            options: Object.keys(RADIUS_VARIANTS),
+            control: { type: "select" }
+        },
+        [LEVEL]: {
+            options: Object.keys(LEVEL_VARIANTS),
+            control: { type: "select" }
+        },
+
     },
     tags: ['autodocs'],
 };
 
 export const Default = {
     args: {
-        [__BOX_COLOR]: '--bromo-color-slate-50'
+        [BORDER]: BORDER_VARIANTS.thin,
+        [RADIUS]: RADIUS_VARIANTS.lg,
+        [LEVEL]: LEVEL_VARIANTS.default.key,
     },
     render: (args) => {
         return (`
@@ -40,7 +56,11 @@ export const Default = {
                     background: color-mix(in oklch, contrast-color(var(--bg-color-resolved)) 20%, transparent);
                 }
             </style>
-            <b-box border style="--box-color: var(${args[__BOX_COLOR]});">
+            <b-box 
+                border=${args.border ? args.border : ''}
+                radius=${args.radius ? args.radius : ''}
+                level=${args.level ? args.level : ''}
+            >
             </b-box>
         </b-box>
        `);
@@ -180,7 +200,7 @@ export const radius = {
     },
 };
 
-export const custom_border = {
+export const border = {
     render: () => {
         return (`
         <b-box border radius>
@@ -193,8 +213,10 @@ export const custom_border = {
                 <b-box border>
                 </b-box>
 
-                <b-box border="2xl">
-                </b-box>
+                <b-box border="hairline"></b-box>
+                <b-box border="thin"></b-box>
+                <b-box border="thick"></b-box>
+                <b-box border="thicker"></b-box>
             </b-stack>
         </b-box>
    `);
