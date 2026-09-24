@@ -52,19 +52,9 @@ export const raw_colors = {
 
             <b-center>
                 <b-stack>
-                    <b-reel>
-                            <div></div>
-                            <div>plum</div>
-                            <div>gold</div>
-                            <div>blue</div>
-                            <div>green</div>
-                            <div>red</div>
-                            <div>slate</div>
-                            <div>teal</div>
-                    </b-reel>
-
-                    <b-reel>
+                    <b-cluster>
                         <b-stack>
+                            <div></div>
                             <div>50</div>
                             <div>100</div>
                             <div>200</div>
@@ -74,6 +64,7 @@ export const raw_colors = {
                             <div>550</div>
                         </b-stack>
                         <b-stack>
+                            <div>plum</div>
                             <div style="--box-color: var(--bromo-color-plum-50)"></div>
                             <div style="--box-color: var(--bromo-color-plum-100)"></div>
                             <div style="--box-color: var(--bromo-color-plum-200)"></div>
@@ -84,6 +75,7 @@ export const raw_colors = {
                         </b-stack>
 
                         <b-stack>
+                            <div>gold</div>
                             <div style="--box-color: var(--bromo-color-gold-50)"></div>
                             <div style="--box-color: var(--bromo-color-gold-100)"></div>
                             <div style="--box-color: var(--bromo-color-gold-200)"></div>
@@ -94,6 +86,7 @@ export const raw_colors = {
                         </b-stack>
 
                         <b-stack>
+                            <div>blue</div>
                             <div style="--box-color: var(--bromo-color-blue-50)"></div>
                             <div style="--box-color: var(--bromo-color-blue-100)"></div>
                             <div style="--box-color: var(--bromo-color-blue-200)"></div>
@@ -104,6 +97,7 @@ export const raw_colors = {
                         </b-stack>
 
                         <b-stack>
+                            <div>green</div>
                             <div style="--box-color: var(--bromo-color-green-50)"></div>
                             <div style="--box-color: var(--bromo-color-green-100)"></div>
                             <div style="--box-color: var(--bromo-color-green-200)"></div>
@@ -114,6 +108,7 @@ export const raw_colors = {
                         </b-stack>
 
                         <b-stack>
+                            <div>red</div>
                             <div style="--box-color: var(--bromo-color-red-50)"></div>
                             <div style="--box-color: var(--bromo-color-red-100)"></div>
                             <div style="--box-color: var(--bromo-color-red-200)"></div>
@@ -124,6 +119,7 @@ export const raw_colors = {
                         </b-stack>
 
                         <b-stack>
+                            <div>slate</div>
                             <div style="--box-color: var(--bromo-color-slate-50)"></div>
                             <div style="--box-color: var(--bromo-color-slate-100)"></div>
                             <div style="--box-color: var(--bromo-color-slate-200)"></div>
@@ -134,6 +130,7 @@ export const raw_colors = {
                         </b-stack>
 
                         <b-stack>
+                            <div>teal</div>
                             <div style="--box-color: var(--bromo-color-teal-50)"></div>
                             <div style="--box-color: var(--bromo-color-teal-100)"></div>
                             <div style="--box-color: var(--bromo-color-teal-200)"></div>
@@ -142,7 +139,7 @@ export const raw_colors = {
                             <div style="--box-color: var(--bromo-color-teal-500)"></div>
                             <div style="--box-color: var(--bromo-color-teal-550)"></div>
                         </b-stack>
-                    </b-reel>
+                    </b-cluster>
                 </b-stack>
             </b-center>
         </b-box>

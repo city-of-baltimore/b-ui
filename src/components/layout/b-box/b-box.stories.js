@@ -1,5 +1,5 @@
 import { fn } from 'storybook/test';
-import { __BOX_COLOR } from '../../../css_var_params.js'
+import { __BOX_COLOR, __BOX_L_FACTOR, __BOX_L_FACTOR_DARK } from '../../../css_var_params.js'
 import { BORDER, LEVEL, RADIUS } from '../../../attributes.js';
 import { BORDER_VARIANTS, RADIUS_VARIANTS, LEVEL_VARIANTS } from "../../../variants.js";
 import './b-box.js';
@@ -15,17 +15,20 @@ export default {
             },
         },
     },
-
-    argsTypes: {
+    argTypes: {
         [__BOX_COLOR]: {
             control: {
-                type: "string"
-            },
-            default: "--bromo-color-slate-50",
+                type: "text"
+            }
+        },
+        [__BOX_L_FACTOR]: {
+            description: "sets the lightness value of the `--box-color`",
+            control: {
+                type: "number"
+            }
         },
         [BORDER]: {
             options: Object.keys(BORDER_VARIANTS),
-            default: BORDER_VARIANTS.thin,
             control: { type: "select" }
         },
         [RADIUS]: {
@@ -35,55 +38,33 @@ export default {
         [LEVEL]: {
             options: Object.keys(LEVEL_VARIANTS),
             control: { type: "select" }
-        },
-
+        }
+    },
+    args: {
+        [__BOX_COLOR]: "--bromo-color-slate-50",
+        [__BOX_L_FACTOR]: 0.98,
+        [__BOX_L_FACTOR_DARK]: 0.18,
+        [BORDER]: BORDER_VARIANTS.thin,
+        [RADIUS]: RADIUS_VARIANTS.lg,
+        [LEVEL]: LEVEL_VARIANTS.default.key
     },
     tags: ['autodocs'],
 };
 
 export const Default = {
-    args: {
-        [BORDER]: BORDER_VARIANTS.thin,
-        [RADIUS]: RADIUS_VARIANTS.lg,
-        [LEVEL]: LEVEL_VARIANTS.default.key,
-    },
-    render: (args) => {
+    render: ({
+        [__BOX_COLOR]: __box_color,
+        [__BOX_L_FACTOR]: __box_l_factor,
+        [__BOX_L_FACTOR_DARK]: __box_l_factor_dark,
+        border,
+        radius,
+        level
+    }) => {
         return (`
         <b-box border radius>
             <style>
                 me {
-                    padding: var(--bromo-space-lg);
-                    background: color-mix(in oklch, contrast-color(var(--bg-color-resolved)) 20%, transparent);
-                }
-            </style>
-            <b-box 
-                border=${args.border ? args.border : ''}
-                radius=${args.radius ? args.radius : ''}
-                level=${args.level ? args.level : ''}
-            >
-            </b-box>
-        </b-box>
-       `);
-    },
-};
-
-export const levels = {
-    args: {
-        "--box-color:": "--bromo-color-slate-50"
-    },
-    parameters: {
-        docs: {
-            description: {
-                story: '`level` has 3 possible values: `raised | default | lowered`. if `level` is unset or doesn\'t exist, its value is `default`. ',
-            },
-        },
-    },
-    render: (args) => {
-        return (`
-        <b-box border radius>
-            <style>
-                me {
-                    --box-color: var(${args["--box-color:"]});
+                    --box-color: var(${__box_color});
                     padding: var(--bromo-space-lg);
                     background: color-mix(in oklch, contrast-color(var(--bg-color-resolved)) 20%, transparent);
                 }
@@ -93,9 +74,59 @@ export const levels = {
                     }
                 }
             </style>
-            <b-stack>
+            <b-box 
+                style="
+                    ${__BOX_COLOR}: var(${__box_color});
+                    ${__BOX_L_FACTOR}: ${__box_l_factor};
+                    ${__BOX_L_FACTOR_DARK}: ${__box_l_factor_dark};
+                "
+                border=${border ? border : ''}
+                radius=${radius ? radius : ''}
+                level=${level ? level : ''}
+            >
+            </b-box>
+        </b-box>
+       `);
+    }
+};
+
+export const levels = {
+    parameters: {
+        docs: {
+            description: {
+                story: '`level` has 3 possible values: `raised | default | lowered`. if `level` is unset or doesn\'t exist, its value is `default`. ',
+            },
+        },
+        controls: {
+            exclude: [BORDER, RADIUS]
+        }
+    },
+    render: ({
+        [__BOX_COLOR]: __box_color,
+        [__BOX_L_FACTOR]: __box_l_factor,
+        level
+    }) => {
+        return (`
+        <b-box border radius>
+            <style>
+                me {
+                    --box-color: var(${__box_color});
+                    padding: var(--bromo-space-lg);
+                    background: color-mix(in oklch, contrast-color(var(--bg-color-resolved)) 20%, transparent);
+                }
+                [data-theme="dark"] {
+                    me {
+                        background: var(--bg-color-resolved);
+                    }
+                }
+            </style>
+            <b-stack style="
+                    ${__BOX_COLOR}: var(${__box_color});
+                    ${__BOX_L_FACTOR}: ${__box_l_factor};
+                "
+            >
                 <b-box border="thicker" level="raised"></b-box>
-                <b-box border="thicker" level></b-box>
+                <b-box border="thicker" level="${level}"></b-box>
                 <b-box border="thicker" level="lowered"></b-box>
             </b-stack>
         </b-box>
@@ -112,8 +143,19 @@ export const custom_background_color = {
                 ,
             },
         },
+        controls: {
+            exclude: [BORDER, RADIUS, LEVEL]
+        }
     },
-    render: () => {
+    args: {
+        [__BOX_COLOR]: '--bromo-color-green-500',
+        [__BOX_L_FACTOR_DARK]: 0.18,
+    },
+    render: ({
+        [__BOX_COLOR]: __box_color,
+        [__BOX_L_FACTOR]: __box_l_factor,
+        [__BOX_L_FACTOR_DARK]: __box_l_factor_dark,
+    }) => {
         return (`
         <b-box border radius>
             <style>
@@ -128,36 +170,16 @@ export const custom_background_color = {
                 }
             </style>
 
-            <b-stack style="--box-color: var(--bromo-color-plum-300);">
-                <div>
+            <b-stack style="
+                    ${__BOX_COLOR}: var(${__box_color});
+                    ${__BOX_L_FACTOR}: ${__box_l_factor};
+                    ${__BOX_L_FACTOR_DARK}: ${__box_l_factor_dark};
+            ">
+                <b-stack>
                     <b-box border="thicker" level="raised"></b-box>
                     <b-box border="thicker" level></b-box>
                     <b-box border="thicker" level="lowered"></b-box>
-                </div>
-                <div>
-                    <style>
-                        [data-theme="dark"] {
-                            me {
-                                --box-l-factor: 0.35;
-                            }
-                        }
-                    </style>
-                    <b-box border="thicker" level="raised"></b-box>
-                    <b-box border="thicker" level></b-box>
-                    <b-box border="thicker" level="lowered"></b-box>
-                </div>
-                <div style="--box-color: var(--bromo-color-gold-300)">
-                    <style>
-                        [data-theme="dark"] {
-                            me {
-                                --box-l-factor: 0.35;
-                            }
-                        }
-                    </style>
-                    <b-box border="thicker" level="raised"></b-box>
-                    <b-box border="thicker" level></b-box>
-                    <b-box border="thicker" level="lowered"></b-box>
-                </div>
+                </b-stack>
             </b-stack>
         </b-box>
        `);
@@ -172,8 +194,11 @@ export const radius = {
                 story: 'adding `radius` prop is equivalent to `radius=\'\'`',
             },
         },
+        controls: {
+            exclude: [BORDER, LEVEL, __BOX_COLOR, __BOX_L_FACTOR, __BOX_L_FACTOR_DARK]
+        }
     },
-    render: () => {
+    render: ({ radius }) => {
         return (`
         <b-box border radius>
             <style>
@@ -185,40 +210,10 @@ export const radius = {
                 }
             </style>
             <b-stack>
-                <b-box radius></b-box>
-                <b-box radius="sm"></b-box>
-                <b-box radius="md"></b-box>
-                <b-box radius="lg"></b-box>
-                <b-box radius="xl"></b-box>
-                <b-box radius="2xl"></b-box>
-                <b-box radius="3xl"></b-box>
-                <b-box radius="4xl"></b-box>
-                <b-box radius="full"></b-box>
+                <b-box radius border="thick"></b-box>
+                <b-box radius="${radius}" border="thick"></b-box>
             </b-stack>
         </b-box border radius>
-   `);
-    },
-};
-
-export const border = {
-    render: () => {
-        return (`
-        <b-box border radius>
-            <style>
-                me {
-                    padding: var(--bromo-space-lg);
-                }
-            </style>
-            <b-stack>
-                <b-box border>
-                </b-box>
-
-                <b-box border="hairline"></b-box>
-                <b-box border="thin"></b-box>
-                <b-box border="thick"></b-box>
-                <b-box border="thicker"></b-box>
-            </b-stack>
-        </b-box>
    `);
     },
 };

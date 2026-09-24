@@ -20,7 +20,9 @@ export default class BButton extends Elena(HTMLElement) {
     connectedCallback() {
         super.connectedCallback();
 
-        this.addEventListener('click', this._ripple);
+        if (!this[DISABLED]) {
+            this.addEventListener('click', this._ripple);
+        }
     }
 
     willUpdate() {
@@ -28,62 +30,110 @@ export default class BButton extends Elena(HTMLElement) {
     }
 
     styles(style_id) {
-        let variant_style = `
-            --color-background-hover: var(--color-purple-dark);
-            --color-text: var(--color-white-off);
-
-            background: var(--color-purple-dark);
-        `;
+        let variant_style = ``;
+        let variant_style_hover = ``;
+        let variant_style_active = ``;
+        let variant_ripple_style = ``;
 
         switch (this[VARIANT]) {
             case 'secondary':
                 variant_style = `
-                    --color-background-hover: none;
-                    --color-text: var(--color-foreground);
-
-                    background: none;
-                    border: var(--box-border-thin);
+                    background-color: var(--bromo-color-transparent);
+                    border-color: var(--box-color);
+                    border-width: var(--bromo-border-width-thin);
+                    color: var(--box-color);
                 `;
+
+                variant_style_hover = `
+                    --_button-bg-color-resolved: color-mix(
+                        in oklab,
+                        var(--bromo-color-transparent),
+                        var(--box-color) 10%
+                    );
+                    background-color: var(--_button-bg-color-resolved) !important;
+                `
+
+                variant_style_active = `
+                    --_button-bg-color-resolved: color-mix(
+                        in oklab,
+                        var(--bromo-color-transparent),
+                        var(--box-color) 15%
+                    );
+                `
+
+                variant_ripple_style = `
+                    --ripple-color: var(--box-color);
+                `;
+
                 break;
             case 'subtle':
                 variant_style = `
-                    --color-background-hover: var(--color-neutral-light);
-                    --color-text: var(--color-foreground);
-
-                    background: none;
-                    transition: background-color var(--transition-duration) cubic-bezier(0.4, 0, 0.2, 1);
+                    --hover-color: oklch(from var(--box-color) .95 c h);
+                    background-color: var(--bromo-color-transparent);
+                    color: var(--box-color);
                 `;
-                break;
-            case 'danger':
-                variant_style = `
-                    --color-background-hover: var(--color-warning);
-                    --color-text: var(--color-white-off);
 
-                    background: var(--color-warning);
+                variant_style_hover = `
+                    --_button-bg-color-resolved: color-mix(
+                        in oklab,
+                        var(--bromo-color-transparent),
+                        var(--box-color) 10%
+                    );
+                    background-color: var(--_button-bg-color-resolved);
+                `
+
+                variant_style_active = `
+                    --_button-bg-color-resolved: color-mix(
+                        in oklab,
+                        var(--bromo-color-transparent),
+                        var(--box-color) 15%
+                    );
+
+                    background-color: var(--_button-bg-color-resolved);
+                `
+
+                variant_ripple_style = `
+                    --ripple-color: color-mix(
+                        in oklab,
+                        var(--bromo-color-transparent),
+                        var(--box-color) 20%
+                    );
                 `;
                 break;
         }
 
         return (`
             [data-i=${style_id}]::part(${this.constructor.parts.button}) {
-                --color-background-hover: unset;
-                --color-text: var(--color-background);
+                --_padding-block: var(--bromo-padding-block);
+                --_padding-inline: var(--bromo-padding-inline);
+                --_form-control-height: round(calc(2 * var(--_padding-block) + 1em * 1.25), 1px);
+                --box-color: var(--bromo-color-brand-primary-default);
+                --_button-bg-color-resolved: var(--box-color);
+                --_color: contrast-color(var(--_button-bg-color-resolved));
 
-                width: fit-content;
-                border-radius: var(--s-1);
-                border: none;
-
-                background: var(--color-foreground);
-                color: var(--color-text);
-
-                white-space: nowrap;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
                 text-decoration: none;
-                padding-block: var(--s-1);
-                padding-inline: var(--s0);
                 cursor: pointer;
-
-                outline: none;
+                white-space: nowrap;
+                font: inherit;
+                font-size: var(--bromo-form-control-font-size, var(--text-base));
+                border-color: transparent;
+                padding-block: 0;
+                background-color: var(--_button-bg-color-resolved);
+                border-radius: var(--bromo-form-control-radius);
+                border-style: var(--bromo-border-style);
+                border-width: var(--bromo-form-control-border-width);
                 box-shadow: none;
+                color: var(--_color);
+                font-weight: var(--bromo-font-weight-semibold);
+                gap: var(--bromo-space-2xs);
+                min-height: var(--_form-control-height);
+                padding-inline: var(--_padding-inline);
+                transition-property: color, background-color, border-color;
+                transition-timing-function: var(--bromo-ease-out);
+                transition-duration: var(--bromo-transition-normal);
 
                 position: relative;
                 overflow: hidden;
@@ -92,7 +142,14 @@ export default class BButton extends Elena(HTMLElement) {
             }
 
             [data-i=${style_id}]::part(${this.constructor.parts.button}):hover {
-                background: var(--color-background-hover);
+                --hover-color: var(--box-color);
+                --_button-bg-color-resolved: color-mix(
+                    in oklab,
+                    var(--hover-color),
+                    black 3%
+                );
+
+                ${variant_style_hover}
             }
 
             [data-i=${style_id}]::part(${this.constructor.parts.button}):focus {
@@ -100,14 +157,25 @@ export default class BButton extends Elena(HTMLElement) {
                 outline-offset: var(--s-5);
             }
 
+            [data-i=${style_id}]::part(${this.constructor.parts.button}):active {
+                --_button-bg-color-resolved: color-mix(
+                    in oklab,
+                    var(--box-color),
+                    white 15%
+                );
+
+                ${variant_style_active}
+            }
+
             [data-i=${style_id}]::part(${this.constructor.parts.button}):disabled {
+                pointer-events: none;
                 cursor: auto;
                 opacity: 80%;
             }
 
             [data-i=${style_id}] span {
                 position: absolute;
-                background: var(--color-text);
+                background: var(--ripple-color, var(--_color));
                 display: block;
                 pointer-events: none;
 
@@ -115,6 +183,14 @@ export default class BButton extends Elena(HTMLElement) {
 
                 transform: translate(-50%, -50%);
                 animation: ripple 1s linear infinite;
+
+                ${variant_ripple_style}
+            }
+
+            [data-theme="dark"] {
+                [data-i=${style_id}]::part(${this.constructor.parts.button}) {
+                    --box-color: oklch(from var(--bromo-color-plum-50) calc( 1 - var(--bromo-factor-box-l-default)) c h );
+                }
             }
 
             @keyframes ripple {
@@ -129,8 +205,15 @@ export default class BButton extends Elena(HTMLElement) {
                     opacity: 0;
                 }
             }
+
     `)
     }
+
+    // @media (prefers-reduced-motion: reduce) {
+    //   [data-i=${style_id}] span {
+    //     display: none;
+    //   }
+    // }
 
     render() {
         if (this[HREF].length > 0) {

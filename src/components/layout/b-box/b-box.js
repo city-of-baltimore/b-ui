@@ -1,4 +1,5 @@
 import { Elena } from "@elenajs/core";
+import { __BOX_COLOR, __BOX_L_FACTOR, __BOX_L_FACTOR_DARK } from '../../../css_var_params.js'
 import { BORDER, RADIUS, LEVEL } from "../../../attributes.js";
 import { BORDER_VARIANTS, RADIUS_VARIANTS, LEVEL_VARIANTS } from "../../../variants.js";
 import { generate_styles } from "../../../helpers.js";
@@ -26,7 +27,7 @@ export default class BBox extends Elena(HTMLElement) {
         return (`
                     [data-i=${style_id}] {
                         --bg-color: var(--box-color, var(--bromo-color-slate-50));
-                        --bg-color-resolved: oklch( from var(--bg-color) var(--box-l-factor, var(--bromo-factor-surface-l-default)) var(--surface-c-factor, var(--bromo-factor-surface-c-default)) h);
+                        --bg-color-resolved: oklch( from var(--bg-color) var(${__BOX_L_FACTOR}, var(--bromo-factor-surface-l-default)) var(--surface-c-factor, var(--bromo-factor-surface-c-default)) h);
                         --contrast-color: contrast-color(var(--bg-color-resolved));
                         --border-l-factor: ${this[LEVEL] ? LEVEL_VARIANTS[this[LEVEL]].val.light : LEVEL_VARIANTS.default.val.light};
                         --border-color-resolved: oklch(from var(--border-color, var(--bg-color)) calc(var(--l-base) * exp(l - (l * var(--border-l-factor)))) c h);
@@ -47,6 +48,7 @@ export default class BBox extends Elena(HTMLElement) {
                     [data-theme="dark"] {
                         [data-i=${style_id}] {
                             --border-l-factor: ${this[LEVEL] ? LEVEL_VARIANTS[this[LEVEL]].val.dark : LEVEL_VARIANTS.default.val.dark};
+                            ${__BOX_L_FACTOR}: var(${__BOX_L_FACTOR_DARK}, var(--bromo-factor-surface-l-default)) !important;
                         }
                     }
         `)
