@@ -1,0 +1,56 @@
+[status="neutral"] {
+    --box-color: var(--bromo-color-neutral) !important;
+}
+
+[status="info"] {
+    --box-color: oklch( from var(--bromo-color-informative) .5 c h) !important;
+}
+
+[status="positive"] {
+    --box-color: var(--bromo-color-positive) !important;
+}
+
+[status="warning"] {
+    --box-color: var(--bromo-color-warning) !important;
+}
+
+[status="critical"] {
+    --box-color: var(--bromo-color-critical) !important;
+}
+
+[data-theme="dark"] {
+    [box] {
+        --border-l-factor: .5;
+    }
+    [box="raised"] {
+        --border-l-factor: 1.5;
+    }
+    [box="lowered"] {
+        --border-l-factor: -0.5;
+    }
+
+    [status="neutral"] {
+        --box-color-resolved: oklch(from var(--bromo-color-neutral) calc( 1 - var(--box-l-factor, var(--bromo-factor-box-l-default))) c h );
+        --box-color: var(--box-color-resolved) !important;
+    }
+
+    [status="info"] {
+        --box-color-resolved: oklch(from var(--bromo-color-informative) calc( 0.9 - var(--box-l-factor, var(--bromo-factor-box-l-default))) c h );
+        --box-color: var(--box-color-resolved) !important;
+    }
+
+    [status="positive"] {
+        --box-color-resolved: oklch(from var(--bromo-color-positive) calc( .8 - var(--box-l-factor, var(--bromo-factor-box-l-default))) c h );
+        --box-color: var(--box-color-resolved) !important;
+    }
+
+    [status="warning"] {
+        --box-color-resolved: oklch(from var(--bromo-color-warning) calc( .9 - var(--box-l-factor, var(--bromo-factor-box-l-default))) c h );
+        --box-color: var(--box-color-resolved) !important;
+    }
+
+    [status="critical"] {
+        --box-color-resolved: oklch(from var(--bromo-color-critical) calc( .8 - var(--box-l-factor, var(--bromo-factor-box-l-default))) c h );
+        --box-color: var(--box-color-resolved) !important;
+    }
+}

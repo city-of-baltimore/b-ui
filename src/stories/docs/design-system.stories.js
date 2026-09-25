@@ -196,7 +196,7 @@ export const alias = {
             </style>
 
             <b-center>
-            <b-reel>
+            <b-reel style="--item-width: fit-content;">
                 <b-reel>
                     <b-reel>
                         <b-stack>
@@ -254,7 +254,6 @@ export const alias = {
                         <b-stack>
                             <span>--bromo-body-small</span>
                             <span>--bromo-body-default</span>
-                            <span>--bromo-body-large</span>
                             <span>--bromo-body-large</span>
                         </b-stack>
                         <b-stack>

@@ -107,8 +107,7 @@ export default class BButton extends Elena(HTMLElement) {
                 --_padding-block: var(--bromo-padding-block);
                 --_padding-inline: var(--bromo-padding-inline);
                 --_form-control-height: round(calc(2 * var(--_padding-block) + 1em * 1.25), 1px);
-                --box-color: var(--bromo-color-brand-primary-default);
-                --_button-bg-color-resolved: var(--box-color);
+                --_button-bg-color-resolved: var(--box-color, var(--bromo-color-brand-primary-default));
                 --_color: contrast-color(var(--_button-bg-color-resolved));
 
                 display: inline-flex;
