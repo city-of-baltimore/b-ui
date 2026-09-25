@@ -206,14 +206,14 @@ export default class BButton extends Elena(HTMLElement) {
                 }
             }
 
+            @media (prefers-reduced-motion: reduce) {
+              [data-i=${style_id}] span {
+                display: none;
+              }
+            }
+
     `)
     }
-
-    // @media (prefers-reduced-motion: reduce) {
-    //   [data-i=${style_id}] span {
-    //     display: none;
-    //   }
-    // }
 
     render() {
         if (this[HREF].length > 0) {
