@@ -9,7 +9,10 @@ import {
     Stories,
 } from '@storybook/addon-docs/blocks';
 
+import '../src/global.css';
 import '../src/tokens.css';
+import '../src/status.css';
+import '../src/reset.css';
 import '../src/deps/css-scope-inline@1.0.0';
 import '../src/deps/alpine@3.15.8.min';
 

@@ -1,0 +1,214 @@
+
+@layer reset, global, component;
+
+/* Global CSS layer */
+@layer global {
+    body > b-box {
+        border: 0 !important;
+        border-radius: 0 !important;
+        min-height: 100vh;
+    }
+
+    address,
+    blockquote,
+    dd,
+    dl,
+    fieldset,
+    figure,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    ol,
+    p,
+    pre,
+    table,
+    ul {
+        margin: calc(var(--bromo-margin)/2);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: var(--bromo-font-weight-bold, bold);
+        font-family: var(--bromo-font-heading, inherit);
+        line-height: var(--bromo-leading-heading, var(--bromo-leading-none, 1.1));
+        text-wrap: balance;
+        overflow-wrap: break-word;
+    }
+
+    h1 {
+        font-size: var(--bromo-heading-1);
+    }
+
+    h2 {
+        font-size: var(--bromo-heading-2);
+    }
+
+    h3 {
+        font-size: var(--bromo-heading-3);
+    }
+
+    h4 {
+        font-size: var(--bromo-heading-4);
+    }
+
+    h5 {
+        font-size: var(--bromo-heading-5);
+    }
+
+    h6 {
+        font-size: var(--bromo-heading-6);
+    }
+
+    p {
+        text-wrap: pretty;
+        overflow-wrap: break-word;
+        margin-block: 0;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    var {
+        font-style: normal;
+        font-weight: var(--bromo-font-weight-semi-bold);
+    }
+
+    sub,
+    sup {
+        font-size: 75%;
+        vertical-align: baseline;
+        display: inline-block;
+    }
+
+    sub {
+        transform: translateY(0.65ex);
+    }
+
+    sup {
+        transform: translateY(-0.7ex);
+    }
+
+    address {
+        font-style: normal;
+    }
+
+    blockquote {
+        margin: 0;
+    }
+
+    blockquote footer {
+        margin-block-start: var(--bromo-space-sm, 1rem);
+        font-style: normal;
+    }
+
+    blockquote p:first-of-type::before {
+        content: open-quote;
+    }
+
+    blockquote p:last-of-type::after {
+        content: close-quote;
+    }
+
+    q {
+        font-style: italic;
+    }
+
+    hr {
+        border: 0;
+        border-block-start: var(--bromo-border-width-thin, 1px) var(--bromo-border-style, solid)
+            var(--color-surface-border, currentColor);
+        margin-block: var(--flow-space, var(--bromo-space-xl, 2rem));
+    }
+
+    abbr {
+        cursor: help;
+        text-underline-offset: 0.125em;
+    }
+
+    mark {
+        border-radius: 0;
+    }
+
+    ::selection {
+        --resolved_bg: var(--bromo-color-selection-bg, Highlight);
+        background: var(--resolved_bg);
+        color: contrast-color(var(--resolved_bg));
+        text-shadow: none;
+    }
+
+
+    /* ============================================
+       Code
+       ============================================ */
+
+    code,
+    kbd,
+    samp {
+        font-family: var(--bromo-font-mono, ui-monospace, monospace);
+        background: var(--box-color, color-mix(in srgb, currentColor 10%, transparent));
+        padding-inline: 0.25em;
+        hyphens: none;
+        tab-size: 2;
+        text-align: left;
+        word-spacing: normal;
+        word-break: normal;
+        word-wrap: normal;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+    }
+
+    pre {
+        white-space: pre-wrap;
+        padding: var(--bromo-space-sm, 0.875rem);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    pre:has(code) {
+        background: CanvasText;
+        color: Canvas;
+    }
+
+    pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        color: inherit;
+    }
+
+    kbd {
+        --_kbd-border-color: color-mix(in srgb, currentColor 20%, #0000);
+        border: var(--bromo-border-width-thin, 1px) var(--bromo-border-style, solid)
+            var(--_kbd-border-color, currentColor);
+        border-bottom: calc(var(--bromo-border-width-thin, 1px) + 1px) solid
+            color-mix(in srgb, currentColor 20%, transparent);
+        border-radius: min(
+            calc(var(--bromo-form-control-toggle-size, 1.125rem) * 0.375),
+            var(--bromo-radius-md, 0.25rem)
+        );
+        font-size: 0.825em;
+        display: inline-flex;
+        gap: var(--bromo-space-3xs, 0.25rem);
+        justify-content: center;
+        align-items: center;
+        vertical-align: middle;
+    }
+}
+
+/* ============================================
+   Web components pre-js default styles
+   ============================================ */
+@layer component {
+    b-button {
+        width: min-content;
+    }
+}
