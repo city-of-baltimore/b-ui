@@ -34,6 +34,7 @@ export const SIDE        = "side";
 export const SIDE_WIDTH  = "side-width";
 export const SPACE       = "space";
 export const SPLIT_AFTER = "split-after";
+export const STATUS      = "status";
 export const TEXT_CENTER = "text-center";
 export const THRESHOLD   = "threshold";
 export const TYPE        = "type";

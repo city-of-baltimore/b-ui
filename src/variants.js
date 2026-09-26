@@ -20,9 +20,17 @@ export const RADIUS_VARIANTS = {
     "full"   : "full"
 };
 
+export const STATUS_VARIANTS = {
+    neutral  : "neutral",
+    info     : "info",
+    positive : "positive",
+    warning  : "warning",
+    critical : "critical"
+}
+
 export const LEVEL_VARIANTS = {
     raised   : { key: "raised", val : { light: 1.5, dark: 1.5 } },
-    default  : { key: "default", val: { light: 2, dark  : 3 } },
+    default  : { key: "default", val: { light: 2, dark  : 2.4 } },
     lowered  : { key: "lowered", val: { light: 2.4, dark: 3.5 } }
 }
 

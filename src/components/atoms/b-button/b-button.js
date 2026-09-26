@@ -1,12 +1,12 @@
 import { Elena, html } from "@elenajs/core";
-import { RADIUS, HREF, TYPE, VARIANT, DISABLED } from "../../../attributes.js";
+import { RADIUS, HREF, TYPE, VARIANT, DISABLED, STATUS } from "../../../attributes.js";
 import { generate_styles } from "../../../helpers.js";
 
 export default class BButton extends Elena(HTMLElement) {
     static tagName = "b-button";
 
     static shadow = "open";
-    static props = [RADIUS, HREF, TYPE, VARIANT, DISABLED];
+    static props = [RADIUS, HREF, TYPE, VARIANT, DISABLED, STATUS];
     static parts = {
         button: 'button',
     };
@@ -15,6 +15,7 @@ export default class BButton extends Elena(HTMLElement) {
     [HREF] = '';
     [TYPE] = '';
     [VARIANT] = '';
+    [STATUS] = '';
     [DISABLED] = false;
 
     connectedCallback() {
@@ -31,7 +32,7 @@ export default class BButton extends Elena(HTMLElement) {
 
     styles(style_id) {
         let variant_style = `
-            --box-color: var(--bromo-color-brand-primary-default);
+            ${!!!this[STATUS].length ? '--box-color: var(--bromo-color-brand-primary-default)' : ''};
         `;
         let variant_style_hover = ``;
         let variant_style_active = ``;

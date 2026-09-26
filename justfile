@@ -8,6 +8,8 @@ dev:
 
 # build for production
 build:
+    rm -rf ./src/stories/assets/b-ui.css
+    rm -rf ./src/stories/assets/b-ui.js
     mmv -r './src/components/*/*/*.stories.*' '#3.stories.xd'
     mmv -r './src/stories/docs/*.stories.*' '#1.stories.xd'
     npx elena build
