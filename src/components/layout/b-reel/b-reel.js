@@ -20,7 +20,6 @@ export default class BReel extends Elena(HTMLElement) {
                     --track-color: var(--bromo-color-slate-50);
                     --thumb-color: oklch(from var(--track-color) .4 c h);
                     --space: var(--bromo-space-${this[SPACE]});
-                    --item-width: calc(var(--bromo-size-step-4)*3);
                     --height: auto;
 
                     display: flex;
@@ -47,7 +46,7 @@ export default class BReel extends Elena(HTMLElement) {
                 }
 
                 [data-i="${style_id}"] > * {
-                    flex: 0 0 var(--item-width);
+                    flex: 0 0 var(--item-width, calc(var(--bromo-size-step-4)*3));
                 }
 
                 [data-i="${style_id}"] > img {
