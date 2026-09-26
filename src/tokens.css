@@ -6,12 +6,12 @@
     --bromo-factor-color-h_diff: 5;
     --bromo-factor-color-ramp_width: 3;
     --bromo-factor-color-offset_dark: 1.5;
-    --bromo-factor-surface-l-raised: 0.99;
-    --bromo-factor-surface-l-default: 0.98;
-    --bromo-factor-surface-l-lowered: 0.97;
-    --bromo-factor-surface-c-raised: 0.01;
-    --bromo-factor-surface-c-default: 0.02;
-    --bromo-factor-surface-c-lowered: 0.03;
+    --bromo-factor-box-l-raised: 0.99;
+    --bromo-factor-box-l-default: 0.98;
+    --bromo-factor-box-l-lowered: 0.97;
+    --bromo-factor-box-c-raised: 0.01;
+    --bromo-factor-box-c-default: 0.02;
+    --bromo-factor-box-c-lowered: 0.03;
     --bromo-factor-border-l_base: 1;
     --bromo-color-plum-50: #613d64;
     --bromo-color-plum-100: #503257;
@@ -289,9 +289,9 @@
 }
 
 [data-theme="dark"] {
-    --bromo-factor-surface-l-raised: 0.19;
-    --bromo-factor-surface-l-default: 0.18;
-    --bromo-factor-surface-l-lowered: 0.17;
+    --bromo-factor-box-l-raised: 0.19;
+    --bromo-factor-box-l-default: 0.18;
+    --bromo-factor-box-l-lowered: 0.17;
     --bromo-color-plum-50: #472c51;
     --bromo-color-plum-100: #372244;
     --bromo-color-plum-200: #271736;
