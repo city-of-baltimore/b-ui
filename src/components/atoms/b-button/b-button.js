@@ -193,7 +193,7 @@ export default class BButton extends Elena(HTMLElement) {
 
             [data-theme="dark"] {
                 [data-i=${style_id}]::part(${this.constructor.parts.button}) {
-                    --box-color: oklch(from var(--bromo-color-plum-50) calc( 1 - var(--bromo-factor-box-l-default)) c h );
+                    ${!!!this[STATUS].length ? '--box-color: oklch(from var(--bromo-color-plum-50) calc( 1 - var(--bromo-factor-box-l-default)) c h );' : ''};
                 }
             }
 
