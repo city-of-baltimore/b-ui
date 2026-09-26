@@ -30,7 +30,9 @@ export default class BButton extends Elena(HTMLElement) {
     }
 
     styles(style_id) {
-        let variant_style = ``;
+        let variant_style = `
+            --box-color: var(--bromo-color-brand-primary-default);
+        `;
         let variant_style_hover = ``;
         let variant_style_active = ``;
         let variant_ripple_style = ``;
@@ -38,6 +40,7 @@ export default class BButton extends Elena(HTMLElement) {
         switch (this[VARIANT]) {
             case 'secondary':
                 variant_style = `
+                    ${variant_style}
                     background-color: var(--bromo-color-transparent);
                     border-color: var(--box-color);
                     border-width: var(--bromo-border-width-thin);
@@ -68,6 +71,7 @@ export default class BButton extends Elena(HTMLElement) {
                 break;
             case 'subtle':
                 variant_style = `
+                    ${variant_style}
                     --hover-color: oklch(from var(--box-color) .95 c h);
                     background-color: var(--bromo-color-transparent);
                     color: var(--box-color);
@@ -107,7 +111,7 @@ export default class BButton extends Elena(HTMLElement) {
                 --_padding-block: var(--bromo-padding-block);
                 --_padding-inline: var(--bromo-padding-inline);
                 --_form-control-height: round(calc(2 * var(--_padding-block) + 1em * 1.25), 1px);
-                --_button-bg-color-resolved: var(--box-color, var(--bromo-color-brand-primary-default));
+                --_button-bg-color-resolved: var(--box-color);
                 --_color: contrast-color(var(--_button-bg-color-resolved));
 
                 display: inline-flex;
